@@ -1,0 +1,2025 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 10 - Sistema di Trasporti e Magazzini",
+  "createdAt": "2026-03-28T12:43:25.110Z",
+  "updatedAt": "2026-03-28T12:43:25.110Z",
+  "nodes": [
+    {
+      "id": "e10_anagrafica",
+      "type": "entity",
+      "position": {
+        "x": 96,
+        "y": 48
+      },
+      "data": {
+        "label": "Anagrafica",
+        "attributes": [
+          {
+            "name": "ID_Anagrafica",
+            "kind": "primary-key",
+            "id": "a10_an_pk"
+          },
+          {
+            "name": "Nome_RagioneSociale",
+            "kind": "normal",
+            "id": "a10_an_rs"
+          },
+          {
+            "name": "Partita_IVA_CF",
+            "kind": "normal",
+            "id": "a10_an_pi"
+          },
+          {
+            "name": "Indirizzo",
+            "kind": "normal",
+            "id": "a10_an_in"
+          },
+          {
+            "name": "Citta",
+            "kind": "normal",
+            "id": "a10_an_ci"
+          },
+          {
+            "name": "Telefono",
+            "kind": "normal",
+            "id": "a10_an_te"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 96,
+        "y": 48
+      },
+      "dragging": false
+    },
+    {
+      "id": "e10_pacco",
+      "type": "entity",
+      "position": {
+        "x": -371.8380989952439,
+        "y": 371.198211174636
+      },
+      "data": {
+        "label": "Pacco",
+        "attributes": [
+          {
+            "name": "Codice_Pacco",
+            "kind": "primary-key",
+            "id": "a10_pa_pk"
+          },
+          {
+            "name": "Peso_Kg",
+            "kind": "normal",
+            "id": "a10_pa_pe"
+          },
+          {
+            "name": "Volume_m3",
+            "kind": "normal",
+            "id": "a10_pa_vo"
+          },
+          {
+            "name": "Valore_Dichiarato",
+            "kind": "normal",
+            "id": "a10_pa_va"
+          },
+          {
+            "name": "Fragile",
+            "kind": "normal",
+            "id": "a10_pa_fr"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -371.8380989952439,
+        "y": 371.198211174636
+      }
+    },
+    {
+      "id": "e10_viaggio",
+      "type": "entity",
+      "position": {
+        "x": 633.6777317497063,
+        "y": 695.8169728413885
+      },
+      "data": {
+        "label": "COriere",
+        "attributes": [
+          {
+            "name": "ID_Viaggio",
+            "kind": "primary-key",
+            "id": "a10_vi_pk"
+          },
+          {
+            "name": "Data_Partenza",
+            "kind": "normal",
+            "id": "a10_vi_dp"
+          },
+          {
+            "name": "Data_Arrivo_Prevista",
+            "kind": "normal",
+            "id": "a10_vi_da"
+          },
+          {
+            "name": "Km_Stimati",
+            "kind": "normal",
+            "id": "a10_vi_km"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 633.6777317497063,
+        "y": 695.8169728413885
+      }
+    },
+    {
+      "id": "e10_autista",
+      "type": "entity",
+      "position": {
+        "x": 1074.6242536589848,
+        "y": 667.8571058378009
+      },
+      "data": {
+        "label": "Autista",
+        "attributes": [
+          {
+            "name": "Patente",
+            "kind": "primary-key",
+            "id": "a10_au_pk"
+          },
+          {
+            "name": "Nome",
+            "kind": "normal",
+            "id": "a10_au_no"
+          },
+          {
+            "name": "Cognome",
+            "kind": "normal",
+            "id": "a10_au_co"
+          },
+          {
+            "name": "Scadenza_Patente",
+            "kind": "normal",
+            "id": "a10_au_sp"
+          },
+          {
+            "name": "In_Riposo",
+            "kind": "normal",
+            "id": "a10_au_ir"
+          },
+          {
+            "name": "c",
+            "kind": "normal",
+            "id": "0i2wmyrpu"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1074.6242536589848,
+        "y": 667.8571058378009
+      },
+      "dragging": false
+    },
+    {
+      "id": "e10_magazzino",
+      "type": "entity",
+      "position": {
+        "x": 896.9685668669791,
+        "y": 46.96856686697922
+      },
+      "data": {
+        "label": "Magazzino",
+        "attributes": [
+          {
+            "name": "Codice_Magazzino",
+            "kind": "primary-key",
+            "id": "a10_ma_pk"
+          },
+          {
+            "name": "Citta",
+            "kind": "normal",
+            "id": "a10_ma_ci"
+          },
+          {
+            "name": "Indirizzo",
+            "kind": "normal",
+            "id": "a10_ma_in"
+          },
+          {
+            "name": "Capacita_Totale",
+            "kind": "normal",
+            "id": "a10_ma_ct"
+          },
+          {
+            "name": "Orario_Operativo",
+            "kind": "normal",
+            "id": "a10_ma_oo"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 896.9685668669791,
+        "y": 46.96856686697922
+      },
+      "dragging": false
+    },
+    {
+      "id": "e10_automezzo",
+      "type": "entity",
+      "position": {
+        "x": 142.98585476417261,
+        "y": 860.5590194118305
+      },
+      "data": {
+        "label": "Automezzo",
+        "attributes": [
+          {
+            "name": "Targa",
+            "kind": "primary-key",
+            "id": "a10_me_pk"
+          },
+          {
+            "name": "Capacita_Carico",
+            "kind": "normal",
+            "id": "a10_me_cc"
+          },
+          {
+            "name": "Anno_Imm",
+            "kind": "normal",
+            "id": "a10_me_ai"
+          },
+          {
+            "name": "Modello",
+            "kind": "normal",
+            "id": "a10_me_mo"
+          },
+          {
+            "name": "Chilometraggio",
+            "kind": "normal",
+            "id": "a10_me_ch"
+          }
+        ],
+        "generalization": {
+          "childIds": [
+            "e10_bilico",
+            "e10_furgone"
+          ],
+          "coverage": "partial",
+          "disjoint": "exclusive"
+        }
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 142.98585476417261,
+        "y": 860.5590194118305
+      }
+    },
+    {
+      "id": "e10_furgone",
+      "type": "entity",
+      "position": {
+        "x": -144.99113344427286,
+        "y": 775.8946888522443
+      },
+      "data": {
+        "label": "Furgone",
+        "attributes": [
+          {
+            "name": "Altezza_Tetto",
+            "kind": "normal",
+            "id": "a10_fu_at"
+          },
+          {
+            "name": "ZTL",
+            "kind": "normal",
+            "id": "a10_fu_zt"
+          }
+        ],
+        "parentEntityId": "e10_automezzo"
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -144.99113344427286,
+        "y": 775.8946888522443
+      },
+      "dragging": false
+    },
+    {
+      "id": "e10_bilico",
+      "type": "entity",
+      "position": {
+        "x": -145.20721997316394,
+        "y": 918.8247101591461
+      },
+      "data": {
+        "label": "Bilico",
+        "attributes": [
+          {
+            "name": "Numero_Assi",
+            "kind": "normal",
+            "id": "a10_bi_na"
+          },
+          {
+            "name": "Tipo_Rimorchio",
+            "kind": "normal",
+            "id": "a10_bi_tr"
+          }
+        ],
+        "parentEntityId": "e10_automezzo"
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -145.20721997316394,
+        "y": 918.8247101591461
+      },
+      "dragging": false
+    },
+    {
+      "id": "r10_mittente",
+      "type": "relation",
+      "position": {
+        "x": 1.5540949075100485,
+        "y": 177.65783397603622
+      },
+      "data": {
+        "label": "Mittente",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1.5540949075100485,
+        "y": 177.65783397603622
+      },
+      "dragging": false
+    },
+    {
+      "id": "r10_destinatario",
+      "type": "relation",
+      "position": {
+        "x": 163.31970906583845,
+        "y": 162.82157685652567
+      },
+      "data": {
+        "label": "Destinatario",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 163.31970906583845,
+        "y": 162.82157685652567
+      }
+    },
+    {
+      "id": "r10_responsabile",
+      "type": "relation",
+      "position": {
+        "x": 1022.7768593395339,
+        "y": 249.29113042490354
+      },
+      "data": {
+        "label": "Responsabile",
+        "attributes": [
+          {
+            "name": "data",
+            "kind": "normal",
+            "id": "u95vu7kh1"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1022.7768593395339,
+        "y": 249.29113042490354
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_pa_pk",
+      "type": "attribute",
+      "position": {
+        "x": -364.42312115763383,
+        "y": 265.54348513494546
+      },
+      "data": {
+        "label": "Codice_Pacco",
+        "kind": "primary-key",
+        "ownerId": "e10_pacco"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -364.42312115763383,
+        "y": 265.54348513494546
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_pk",
+      "type": "attribute",
+      "position": {
+        "x": 35.80035131662276,
+        "y": -141.7388401632344
+      },
+      "data": {
+        "label": "ID_Anagrafica",
+        "kind": "primary-key",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 35.80035131662276,
+        "y": -141.7388401632344
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_rs",
+      "type": "attribute",
+      "position": {
+        "x": 197.86520046258326,
+        "y": -147.99226734497066
+      },
+      "data": {
+        "label": "Nome_RagioneSociale",
+        "kind": "normal",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 197.86520046258326,
+        "y": -147.99226734497066
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_pi",
+      "type": "attribute",
+      "position": {
+        "x": 268.4588736889331,
+        "y": -99.14200385750362
+      },
+      "data": {
+        "label": "Partita_IVA_CF",
+        "kind": "normal",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 268.4588736889331,
+        "y": -99.14200385750362
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_in",
+      "type": "attribute",
+      "position": {
+        "x": 299.04217951581495,
+        "y": -16.328647062069535
+      },
+      "data": {
+        "label": "Indirizzo",
+        "kind": "normal",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 299.04217951581495,
+        "y": -16.328647062069535
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_ci",
+      "type": "attribute",
+      "position": {
+        "x": 115.86520379748816,
+        "y": -134.76871744837166
+      },
+      "data": {
+        "label": "Citta",
+        "kind": "normal",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 115.86520379748816,
+        "y": -134.76871744837166
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_an_te",
+      "type": "attribute",
+      "position": {
+        "x": -23.2109299979748,
+        "y": -72.78031643091575
+      },
+      "data": {
+        "label": "Telefono",
+        "kind": "normal",
+        "ownerId": "e10_anagrafica"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -23.2109299979748,
+        "y": -72.78031643091575
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_pa_pe",
+      "type": "attribute",
+      "position": {
+        "x": -501.2103466483701,
+        "y": 377.79312667565335
+      },
+      "data": {
+        "label": "Peso_Kg",
+        "kind": "normal",
+        "ownerId": "e10_pacco"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -501.2103466483701,
+        "y": 377.79312667565335
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_pa_vo",
+      "type": "attribute",
+      "position": {
+        "x": -382.70188756778464,
+        "y": 506.68667264061884
+      },
+      "data": {
+        "label": "Volume_m3",
+        "kind": "normal",
+        "ownerId": "e10_pacco"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -382.70188756778464,
+        "y": 506.68667264061884
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_pa_va",
+      "type": "attribute",
+      "position": {
+        "x": -456.1315802365703,
+        "y": 453.04367980607213
+      },
+      "data": {
+        "label": "Valore_Dichiarato",
+        "kind": "normal",
+        "ownerId": "e10_pacco"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -456.1315802365703,
+        "y": 453.04367980607213
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_pa_fr",
+      "type": "attribute",
+      "position": {
+        "x": -482.03536122244014,
+        "y": 289.2739824926283
+      },
+      "data": {
+        "label": "Fragile",
+        "kind": "normal",
+        "ownerId": "e10_pacco"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -482.03536122244014,
+        "y": 289.2739824926283
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_vi_pk",
+      "type": "attribute",
+      "position": {
+        "x": 802.6226785992826,
+        "y": 985.3718858461402
+      },
+      "data": {
+        "label": "ID_Viaggio",
+        "kind": "primary-key",
+        "ownerId": "e10_viaggio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 802.6226785992826,
+        "y": 985.3718858461402
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_vi_dp",
+      "type": "attribute",
+      "position": {
+        "x": 688.7527677237847,
+        "y": 819.3867570526844
+      },
+      "data": {
+        "label": "Data_Partenza",
+        "kind": "normal",
+        "ownerId": "e10_viaggio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 688.7527677237847,
+        "y": 819.3867570526844
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_vi_da",
+      "type": "attribute",
+      "position": {
+        "x": 795.3211490144851,
+        "y": 802.6822675480216
+      },
+      "data": {
+        "label": "Data_Arrivo_Prevista",
+        "kind": "normal",
+        "ownerId": "e10_viaggio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 795.3211490144851,
+        "y": 802.6822675480216
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_vi_km",
+      "type": "attribute",
+      "position": {
+        "x": 617.5903307943273,
+        "y": 929.0852272119421
+      },
+      "data": {
+        "label": "Km_Stimati",
+        "kind": "normal",
+        "ownerId": "e10_viaggio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 617.5903307943273,
+        "y": 929.0852272119421
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_me_pk",
+      "type": "attribute",
+      "position": {
+        "x": 146.93147257419812,
+        "y": 987.7671825665235
+      },
+      "data": {
+        "label": "Targa",
+        "kind": "primary-key",
+        "ownerId": "e10_automezzo"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 146.93147257419812,
+        "y": 987.7671825665235
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_me_cc",
+      "type": "attribute",
+      "position": {
+        "x": 159.4996213778596,
+        "y": 738.9730515478436
+      },
+      "data": {
+        "label": "Capacita_Carico",
+        "kind": "normal",
+        "ownerId": "e10_automezzo"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 159.4996213778596,
+        "y": 738.9730515478436
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_me_ai",
+      "type": "attribute",
+      "position": {
+        "x": 311.18629167285206,
+        "y": 974.7952381735126
+      },
+      "data": {
+        "label": "Anno_Imm",
+        "kind": "normal",
+        "ownerId": "e10_automezzo"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 311.18629167285206,
+        "y": 974.7952381735126
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_me_mo",
+      "type": "attribute",
+      "position": {
+        "x": 256.2636352096139,
+        "y": 761.1186077551296
+      },
+      "data": {
+        "label": "Modello",
+        "kind": "normal",
+        "ownerId": "e10_automezzo"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 256.2636352096139,
+        "y": 761.1186077551296
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_me_ch",
+      "type": "attribute",
+      "position": {
+        "x": 227.31353313998434,
+        "y": 980.0980052718791
+      },
+      "data": {
+        "label": "Chilometraggio",
+        "kind": "normal",
+        "ownerId": "e10_automezzo"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 227.31353313998434,
+        "y": 980.0980052718791
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_bi_na",
+      "type": "attribute",
+      "position": {
+        "x": -129.33861783414298,
+        "y": 1157.0109182087594
+      },
+      "data": {
+        "label": "Numero_Assi",
+        "kind": "normal",
+        "ownerId": "e10_bilico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -129.33861783414298,
+        "y": 1157.0109182087594
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_bi_tr",
+      "type": "attribute",
+      "position": {
+        "x": -291.1839642062326,
+        "y": 1066.9362477864613
+      },
+      "data": {
+        "label": "Tipo_Rimorchio",
+        "kind": "normal",
+        "ownerId": "e10_bilico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -291.1839642062326,
+        "y": 1066.9362477864613
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_fu_at",
+      "type": "attribute",
+      "position": {
+        "x": -342.6760374840537,
+        "y": 759.6930246820581
+      },
+      "data": {
+        "label": "Altezza_Tetto",
+        "kind": "normal",
+        "ownerId": "e10_furgone"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -342.6760374840537,
+        "y": 759.6930246820581
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_fu_zt",
+      "type": "attribute",
+      "position": {
+        "x": -271.65047920679956,
+        "y": 693.3594160062789
+      },
+      "data": {
+        "label": "ZTL",
+        "kind": "normal",
+        "ownerId": "e10_furgone"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -271.65047920679956,
+        "y": 693.3594160062789
+      },
+      "dragging": false
+    },
+    {
+      "id": "kgdqpsm9i",
+      "type": "relation",
+      "position": {
+        "x": 423.08116143737413,
+        "y": 731.623597192014
+      },
+      "data": {
+        "label": "Effettuato_Tramite",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 423.08116143737413,
+        "y": 731.623597192014
+      },
+      "dragging": false
+    },
+    {
+      "id": "ybu2uugwg",
+      "type": "relation",
+      "position": {
+        "x": 822.3029356417451,
+        "y": 601.9401558399329
+      },
+      "data": {
+        "label": "Guidato_Da",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 822.3029356417451,
+        "y": 601.9401558399329
+      }
+    },
+    {
+      "id": "a10_au_pk",
+      "type": "attribute",
+      "position": {
+        "x": 1174.3943765486467,
+        "y": 550.6770239113596
+      },
+      "data": {
+        "label": "Patente",
+        "kind": "primary-key",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1174.3943765486467,
+        "y": 550.6770239113596
+      }
+    },
+    {
+      "id": "a10_au_no",
+      "type": "attribute",
+      "position": {
+        "x": 1230.977679040624,
+        "y": 602.6770239113596
+      },
+      "data": {
+        "label": "Nome",
+        "kind": "normal",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1230.977679040624,
+        "y": 602.6770239113596
+      }
+    },
+    {
+      "id": "a10_au_co",
+      "type": "attribute",
+      "position": {
+        "x": 1230.977679040624,
+        "y": 732.6770239113595
+      },
+      "data": {
+        "label": "Cognome",
+        "kind": "normal",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1230.977679040624,
+        "y": 732.6770239113595
+      }
+    },
+    {
+      "id": "a10_au_sp",
+      "type": "attribute",
+      "position": {
+        "x": 1118.394376548647,
+        "y": 797.6770239113596
+      },
+      "data": {
+        "label": "Scadenza_Patente",
+        "kind": "normal",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1118.394376548647,
+        "y": 797.6770239113596
+      }
+    },
+    {
+      "id": "a10_au_ir",
+      "type": "attribute",
+      "position": {
+        "x": 1004.4011150198907,
+        "y": 732.6770239113597
+      },
+      "data": {
+        "label": "In_Riposo",
+        "kind": "normal",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1004.4011150198907,
+        "y": 732.6770239113597
+      },
+      "dragging": false
+    },
+    {
+      "id": "0i2wmyrpu",
+      "type": "attribute",
+      "position": {
+        "x": 1005.8110740566699,
+        "y": 602.6770239113596
+      },
+      "data": {
+        "label": "c",
+        "kind": "normal",
+        "ownerId": "e10_autista"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1005.8110740566699,
+        "y": 602.6770239113596
+      }
+    },
+    {
+      "id": "a10_ma_pk",
+      "type": "attribute",
+      "position": {
+        "x": 944.9685668669791,
+        "y": -86.03143313302078
+      },
+      "data": {
+        "label": "Codice_Magazzino",
+        "kind": "primary-key",
+        "ownerId": "e10_magazzino"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a10_ma_ci",
+      "type": "attribute",
+      "position": {
+        "x": 1068.6059139853492,
+        "y": 3.7963575982360567
+      },
+      "data": {
+        "label": "Citta",
+        "kind": "normal",
+        "ownerId": "e10_magazzino"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a10_ma_in",
+      "type": "attribute",
+      "position": {
+        "x": 1106.8623477760555,
+        "y": 93.71316208676745
+      },
+      "data": {
+        "label": "Indirizzo",
+        "kind": "normal",
+        "ownerId": "e10_magazzino"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1106.8623477760555,
+        "y": 93.71316208676745
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_ma_ct",
+      "type": "attribute",
+      "position": {
+        "x": 1026.2172529193185,
+        "y": -59.02070773701946
+      },
+      "data": {
+        "label": "Capacita_Totale",
+        "kind": "normal",
+        "ownerId": "e10_magazzino"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1026.2172529193185,
+        "y": -59.02070773701946
+      },
+      "dragging": false
+    },
+    {
+      "id": "a10_ma_oo",
+      "type": "attribute",
+      "position": {
+        "x": 1101.0670926456323,
+        "y": 151.8420564600679
+      },
+      "data": {
+        "label": "Orario_Operativo",
+        "kind": "normal",
+        "ownerId": "e10_magazzino"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1101.0670926456323,
+        "y": 151.8420564600679
+      },
+      "dragging": false
+    },
+    {
+      "id": "gd7qka6ld",
+      "type": "relation",
+      "position": {
+        "x": 744.7186332208819,
+        "y": 121.51373893211712
+      },
+      "data": {
+        "label": "avviene_in",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 744.7186332208819,
+        "y": 121.51373893211712
+      },
+      "dragging": false
+    },
+    {
+      "id": "6ad3pjnue",
+      "type": "relation",
+      "position": {
+        "x": 330.0573771686303,
+        "y": 346.13135354426953
+      },
+      "data": {
+        "label": "composto_da",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 330.0573771686303,
+        "y": 346.13135354426953
+      },
+      "dragging": false
+    },
+    {
+      "id": "i7jcmbayn",
+      "type": "entity",
+      "position": {
+        "x": 48.61772695249789,
+        "y": 380.6603185033119
+      },
+      "data": {
+        "label": "Spedizione",
+        "attributes": [
+          {
+            "name": "ID_Spedizione",
+            "kind": "primary-key",
+            "id": "lsogqzrvy"
+          },
+          {
+            "name": "Data_Creazione",
+            "kind": "normal",
+            "id": "ueehv99es"
+          },
+          {
+            "name": "Stato_Consegna",
+            "kind": "normal",
+            "id": "g6t3lobpv"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 48.61772695249789,
+        "y": 380.6603185033119
+      },
+      "dragging": false
+    },
+    {
+      "id": "lsogqzrvy",
+      "type": "attribute",
+      "position": {
+        "x": 102.69571221746715,
+        "y": 533.7588773873343
+      },
+      "data": {
+        "label": "ID_Spedizione",
+        "kind": "primary-key",
+        "ownerId": "i7jcmbayn"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 102.69571221746715,
+        "y": 533.7588773873343
+      },
+      "dragging": false
+    },
+    {
+      "id": "ueehv99es",
+      "type": "attribute",
+      "position": {
+        "x": 17.88474956033506,
+        "y": 525.724776091108
+      },
+      "data": {
+        "label": "Data_Creazione",
+        "kind": "normal",
+        "ownerId": "i7jcmbayn"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 17.88474956033506,
+        "y": 525.724776091108
+      },
+      "dragging": false
+    },
+    {
+      "id": "g6t3lobpv",
+      "type": "attribute",
+      "position": {
+        "x": -74.74570596636,
+        "y": 501.7554724658588
+      },
+      "data": {
+        "label": "Stato_Consegna",
+        "kind": "normal",
+        "ownerId": "i7jcmbayn"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -74.74570596636,
+        "y": 501.7554724658588
+      },
+      "dragging": false
+    },
+    {
+      "id": "7hfvxpbqm",
+      "type": "relation",
+      "position": {
+        "x": -163.0602395672655,
+        "y": 353.91437679242017
+      },
+      "data": {
+        "label": "include",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -163.0602395672655,
+        "y": 353.91437679242017
+      },
+      "dragging": false
+    },
+    {
+      "id": "dqbogyelp",
+      "type": "entity",
+      "position": {
+        "x": 610.1124547827653,
+        "y": 338.69544397310403
+      },
+      "data": {
+        "label": "tappa",
+        "attributes": [
+          {
+            "name": "ID_tappa",
+            "kind": "primary-key",
+            "id": "h7o1z3woc"
+          },
+          {
+            "name": "sequenza",
+            "kind": "normal",
+            "id": "z75t2cw1k"
+          },
+          {
+            "name": "data_arrivo_effettiva",
+            "kind": "normal",
+            "id": "jiyewsqnm"
+          },
+          {
+            "name": "data_partenza_effettiva",
+            "kind": "normal",
+            "id": "660ausswg"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 610.1124547827653,
+        "y": 338.69544397310403
+      },
+      "dragging": false
+    },
+    {
+      "id": "0il532ziy",
+      "type": "relation",
+      "position": {
+        "x": 617.2131652105861,
+        "y": 463.4317557322932
+      },
+      "data": {
+        "label": "trasportato_da",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 617.2131652105861,
+        "y": 463.4317557322932
+      },
+      "dragging": false
+    },
+    {
+      "id": "h7o1z3woc",
+      "type": "attribute",
+      "position": {
+        "x": 814.2312611333363,
+        "y": 275.4184060325823
+      },
+      "data": {
+        "label": "ID_tappa",
+        "kind": "primary-key",
+        "ownerId": "dqbogyelp"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 814.2312611333363,
+        "y": 275.4184060325823
+      },
+      "dragging": false
+    },
+    {
+      "id": "z75t2cw1k",
+      "type": "attribute",
+      "position": {
+        "x": 788.1124547827653,
+        "y": 335.69544397310403
+      },
+      "data": {
+        "label": "sequenza",
+        "kind": "normal",
+        "ownerId": "dqbogyelp"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 806.6526783007844,
+        "y": 394.4567653471153
+      },
+      "dragging": false
+    },
+    {
+      "id": "jiyewsqnm",
+      "type": "attribute",
+      "position": {
+        "x": 780.8854966701075,
+        "y": 461.1482942735729
+      },
+      "data": {
+        "label": "data_arrivo_effettiva",
+        "kind": "normal",
+        "ownerId": "dqbogyelp"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 780.8854966701075,
+        "y": 461.1482942735729
+      },
+      "dragging": false
+    },
+    {
+      "id": "660ausswg",
+      "type": "attribute",
+      "position": {
+        "x": 803.9728698876578,
+        "y": 402.38697289956156
+      },
+      "data": {
+        "label": "data_partenza_effettiva",
+        "kind": "normal",
+        "ownerId": "dqbogyelp"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 803.9728698876578,
+        "y": 402.38697289956156
+      },
+      "dragging": false
+    },
+    {
+      "id": "u95vu7kh1",
+      "type": "attribute",
+      "position": {
+        "x": 1142.776859339534,
+        "y": 279.2911304249035
+      },
+      "data": {
+        "label": "data",
+        "kind": "normal",
+        "ownerId": "r10_responsabile"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1142.776859339534,
+        "y": 279.2911304249035
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e10_ed2",
+      "source": "r10_mittente",
+      "target": "e10_anagrafica",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e10_ed4",
+      "source": "r10_destinatario",
+      "target": "e10_anagrafica",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e10_ed9",
+      "source": "r10_responsabile",
+      "target": "e10_autista",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)"
+      }
+    },
+    {
+      "id": "e10_ed10",
+      "source": "r10_responsabile",
+      "target": "e10_magazzino",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e10_l1",
+      "source": "e10_pacco",
+      "target": "a10_pa_pk",
+      "type": "attribute-link"
+    },
+    {
+      "id": "grap1b0h9",
+      "source": "e10_anagrafica",
+      "target": "a10_an_pk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "lcklaek5m",
+      "source": "e10_anagrafica",
+      "target": "a10_an_rs",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "m651rlir3",
+      "source": "e10_anagrafica",
+      "target": "a10_an_pi",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "f4fuc93kx",
+      "source": "e10_anagrafica",
+      "target": "a10_an_in",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "9ac5tb4f0",
+      "source": "e10_anagrafica",
+      "target": "a10_an_ci",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "d9kqe4x9o",
+      "source": "e10_anagrafica",
+      "target": "a10_an_te",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "48xhzm7tm",
+      "source": "e10_pacco",
+      "target": "a10_pa_pe",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "sty3dfdv6",
+      "source": "e10_pacco",
+      "target": "a10_pa_vo",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "glpnecl79",
+      "source": "e10_pacco",
+      "target": "a10_pa_va",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "52gt0evp7",
+      "source": "e10_pacco",
+      "target": "a10_pa_fr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "c8sqxldpn",
+      "source": "e10_viaggio",
+      "target": "a10_vi_pk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "z8nqtlgrw",
+      "source": "e10_viaggio",
+      "target": "a10_vi_dp",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "9eats0luj",
+      "source": "e10_viaggio",
+      "target": "a10_vi_da",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "dt9quve19",
+      "source": "e10_viaggio",
+      "target": "a10_vi_km",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "cj4sf9nt8",
+      "source": "e10_automezzo",
+      "target": "a10_me_pk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "qi6ivxcl5",
+      "source": "e10_automezzo",
+      "target": "a10_me_cc",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "7szcmus25",
+      "source": "e10_automezzo",
+      "target": "a10_me_ai",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "h78pke4nt",
+      "source": "e10_automezzo",
+      "target": "a10_me_mo",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "fh0we4pgd",
+      "source": "e10_automezzo",
+      "target": "a10_me_ch",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "zm3ki6qe0",
+      "source": "e10_bilico",
+      "target": "a10_bi_na",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "rk43epfov",
+      "source": "e10_bilico",
+      "target": "a10_bi_tr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "vsh1xxgyj",
+      "source": "e10_furgone",
+      "target": "a10_fu_at",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "59mbfz7gc",
+      "source": "e10_furgone",
+      "target": "a10_fu_zt",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "mlz8gob6o",
+      "source": "kgdqpsm9i",
+      "target": "e10_viaggio",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)",
+        "labelOffset": {
+          "x": -1.2317247566434428,
+          "y": 0
+        }
+      },
+      "selected": false
+    },
+    {
+      "id": "b183aadnk",
+      "source": "kgdqpsm9i",
+      "target": "e10_automezzo",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)"
+      }
+    },
+    {
+      "id": "y8jwmvzbj",
+      "source": "e10_autista",
+      "target": "a10_au_pk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "gcuqtmqzn",
+      "source": "e10_autista",
+      "target": "a10_au_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ohrzoea7e",
+      "source": "e10_autista",
+      "target": "a10_au_co",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "kz4km2cvp",
+      "source": "e10_autista",
+      "target": "a10_au_sp",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "zrr79ljrk",
+      "source": "e10_autista",
+      "target": "a10_au_ir",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "l20xukhwt",
+      "source": "e10_autista",
+      "target": "0i2wmyrpu",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "x1wmm5mzl",
+      "source": "e10_magazzino",
+      "target": "a10_ma_pk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "lytw9ulus",
+      "source": "e10_magazzino",
+      "target": "a10_ma_ci",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "sxvl5wte6",
+      "source": "e10_magazzino",
+      "target": "a10_ma_in",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ivp2hz7tp",
+      "source": "e10_magazzino",
+      "target": "a10_ma_ct",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "8v8njbvhg",
+      "source": "e10_magazzino",
+      "target": "a10_ma_oo",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "kg867fs2r",
+      "source": "gd7qka6ld",
+      "target": "e10_magazzino",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)"
+      }
+    },
+    {
+      "id": "m217ij7vh",
+      "source": "ybu2uugwg",
+      "target": "e10_viaggio",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      },
+      "selected": false
+    },
+    {
+      "id": "2xzzaqu22",
+      "source": "ybu2uugwg",
+      "target": "e10_autista",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)"
+      },
+      "selected": false
+    },
+    {
+      "id": "p49k4v1a1",
+      "source": "i7jcmbayn",
+      "target": "lsogqzrvy",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "tu0wgzaid",
+      "source": "i7jcmbayn",
+      "target": "ueehv99es",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "vta6uaxyy",
+      "source": "i7jcmbayn",
+      "target": "g6t3lobpv",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "jd031w0au",
+      "source": "r10_destinatario",
+      "target": "i7jcmbayn",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "82t8xxr0l",
+      "source": "r10_mittente",
+      "target": "i7jcmbayn",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "xxlyq18pp",
+      "source": "7hfvxpbqm",
+      "target": "e10_pacco",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "bcrzlu469",
+      "source": "7hfvxpbqm",
+      "target": "i7jcmbayn",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "mwg8goeon",
+      "source": "gd7qka6ld",
+      "target": "dqbogyelp",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "8y7uczoz4",
+      "source": "6ad3pjnue",
+      "target": "i7jcmbayn",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "nfvcaujca",
+      "source": "6ad3pjnue",
+      "target": "dqbogyelp",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "nu72dshtb",
+      "source": "0il532ziy",
+      "target": "dqbogyelp",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "0wd56gvc2",
+      "source": "0il532ziy",
+      "target": "e10_viaggio",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)",
+        "labelOffset": {
+          "x": -1.3609841784542098,
+          "y": -6.278031643091576
+        },
+        "waypoints": []
+      },
+      "selected": true
+    },
+    {
+      "id": "b5mf31sbd",
+      "source": "dqbogyelp",
+      "target": "h7o1z3woc",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "oiga3w6lg",
+      "source": "dqbogyelp",
+      "target": "z75t2cw1k",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "vuijp5b3m",
+      "source": "dqbogyelp",
+      "target": "jiyewsqnm",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ulnxtm5sd",
+      "source": "dqbogyelp",
+      "target": "660ausswg",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "avmnpv5xm",
+      "source": "r10_responsabile",
+      "target": "u95vu7kh1",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ovjzq0unx",
+      "source": "e10_bilico",
+      "target": "e10_automezzo",
+      "type": "generalization",
+      "data": {
+        "coverage": "partial",
+        "disjoint": "exclusive",
+        "waypoints": []
+      }
+    },
+    {
+      "id": "4eifleg22",
+      "source": "e10_furgone",
+      "target": "e10_automezzo",
+      "type": "generalization",
+      "data": {
+        "coverage": "partial",
+        "disjoint": "exclusive",
+        "waypoints": []
+      }
+    }
+  ],
+  "viewport": {
+    "x": 426.4052794607221,
+    "y": -849.936917242952,
+    "zoom": 1.5157165665103982
+  }
+}

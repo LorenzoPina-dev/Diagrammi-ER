@@ -16,7 +16,8 @@ import 'reactflow/dist/style.css'
 import { useDiagramStore } from '../../store/diagramStore'
 import { nodeTypes }       from '../../nodes'
 import { edgeTypes }       from '../../edges'
-import CanvasContextMenu   from './CanvasContextMenu'
+import CanvasContextMenu       from './CanvasContextMenu'
+import GeneralizationLayer     from './GeneralizationLayer'
 
 export default function ERCanvas() {
   const {
@@ -113,28 +114,6 @@ export default function ERCanvas() {
   return (
     <div className="flex-1 relative" onDrop={handleDrop} onDragOver={handleDragOver}>
 
-      {/* ── Definizioni SVG globali ── */}
-      <svg style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
-        <defs>
-          <marker
-            id="generalization-arrow"
-            markerWidth="12"
-            markerHeight="12"
-            refX="10"
-            refY="6"
-            orient="auto"
-            markerUnits="userSpaceOnUse"
-          >
-            <polygon
-              points="1,1 11,6 1,11"
-              fill="none"
-              stroke="#d97706"
-              strokeWidth="1.5"
-            />
-          </marker>
-        </defs>
-      </svg>
-
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -174,6 +153,9 @@ export default function ERCanvas() {
           pannable
         />
       </ReactFlow>
+
+      {/* ── Layer generalizzazioni (struttura a T) ── */}
+      <GeneralizationLayer />
 
       {/* ── Menu contestuale ── */}
       {contextMenu && (

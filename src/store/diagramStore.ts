@@ -22,6 +22,8 @@ import type {
   AttributeNodeData,
   AttributeData,
   ERProject,
+  GeneralizationCoverage,
+  GeneralizationDisjoint,
 } from '../types/er.types'
 
 // ─────────────────────────────────────────────────────────────
@@ -58,7 +60,7 @@ interface DiagramState {
   updateEntityLabel:        (id: string, label: string) => void
   addAttributeToEntity:     (entityId: string, attr: Omit<AttributeData, 'id'>) => void
   removeAttributeFromEntity:(entityId: string, attrId: string) => void
-  setEntityParent:          (childId: string, parentId: string | undefined) => void
+  setGeneralization:        (parentId: string, childIds: string[], coverage: GeneralizationCoverage, disjoint: GeneralizationDisjoint) => void
 
   // ── Actions Relazione ───────────────────────────────────
   addRelation:              (position: { x: number; y: number }) => string
@@ -162,10 +164,22 @@ export const useDiagramStore = create<DiagramState>()(
                     (a: AttributeData) => a.id !== removedId,
                   )
                 }
-                // Rimuovi anche l'arco attribute-link
                 s.edges = s.edges.filter(
                   (e) => e.source !== removedId && e.target !== removedId,
                 )
+              } else if (removedNode?.type === 'entity') {
+                // Rimuovi edge di generalizzazione collegati
+                s.edges = s.edges.filter(
+                  (e) => !(e.type === 'generalization' && (e.source === removedId || e.target === removedId)),
+                )
+                // Rimuovi il nodo dai childIds di eventuali padri
+                for (const n of s.nodes) {
+                  if (n.type === 'entity' && n.data.generalization) {
+                    n.data.generalization.childIds = n.data.generalization.childIds.filter(
+                      (cid: string) => cid !== removedId,
+                    )
+                  }
+                }
               }
             }
           }
@@ -272,24 +286,27 @@ export const useDiagramStore = create<DiagramState>()(
         })
       },
 
-      setEntityParent: (childId, parentId) => {
+      setGeneralization: (parentId, childIds, coverage, disjoint) => {
         get().pushHistory()
         set((s) => {
-          const child = s.nodes.find((n) => n.id === childId)
-          if (!child) return
-          child.data.parentEntityId = parentId
+          // Aggiorna il dato sul nodo padre
+          const parentNode = s.nodes.find((n) => n.id === parentId)
+          if (!parentNode) return
+          parentNode.data.generalization = { childIds, coverage, disjoint }
 
+          // Rimuovi tutti gli edge di generalizzazione che hanno questo padre
           s.edges = s.edges.filter(
-            (e) => !(e.type === 'generalization' && e.source === childId),
+            (e) => !(e.type === 'generalization' && e.target === parentId),
           )
 
-          if (parentId) {
+          // Crea un edge per ogni figlio (source=figlio, target=padre)
+          for (const childId of childIds) {
             s.edges.push({
               id:     nanoid(),
               source: childId,
               target: parentId,
               type:   'generalization',
-              data:   { coverage: 'partial', disjoint: 'exclusive' },
+              data:   { coverage, disjoint, waypoints: [] },
             })
           }
         })

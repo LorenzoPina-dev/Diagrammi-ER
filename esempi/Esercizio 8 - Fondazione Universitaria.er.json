@@ -1,14 +1,14 @@
 {
   "version": "1.0",
   "name": "Esercizio 8 - Fondazione Universitaria",
-  "createdAt": "2026-03-28T09:22:41.748Z",
-  "updatedAt": "2026-03-28T09:22:41.748Z",
+  "createdAt": "2026-03-28T12:45:53.109Z",
+  "updatedAt": "2026-03-28T12:45:53.109Z",
   "nodes": [
     {
       "id": "e8_persona",
       "type": "entity",
       "position": {
-        "x": 452,
+        "x": 451.12944943670385,
         "y": 137.99999999999997
       },
       "data": {
@@ -44,13 +44,21 @@
             "kind": "normal",
             "id": "a8_p_dn"
           }
-        ]
+        ],
+        "generalization": {
+          "childIds": [
+            "e8_studente",
+            "e8_lavoratore"
+          ],
+          "coverage": "total",
+          "disjoint": "overlapping"
+        }
       },
       "width": 140,
       "height": 41,
-      "selected": false,
+      "selected": true,
       "positionAbsolute": {
-        "x": 452,
+        "x": 451.12944943670385,
         "y": 137.99999999999997
       },
       "dragging": false
@@ -122,7 +130,15 @@
             "kind": "normal",
             "id": "a8_l_tc"
           }
-        ]
+        ],
+        "generalization": {
+          "childIds": [
+            "e8_docente",
+            "e8_tecnico"
+          ],
+          "coverage": "total",
+          "disjoint": "exclusive"
+        }
       },
       "width": 140,
       "height": 41,
@@ -198,36 +214,6 @@
       "dragging": false
     },
     {
-      "id": "r8_isa_pers",
-      "type": "relation",
-      "position": {
-        "x": 460,
-        "y": 250
-      },
-      "data": {
-        "label": "ISA (Persona)",
-        "attributes": []
-      },
-      "width": 120,
-      "height": 120
-    },
-    {
-      "id": "r8_isa_lav",
-      "type": "relation",
-      "position": {
-        "x": 760,
-        "y": 550
-      },
-      "data": {
-        "label": "ISA (Lavoratore)",
-        "attributes": []
-      },
-      "width": 120,
-      "height": 120,
-      "selected": false,
-      "dragging": false
-    },
-    {
       "id": "r8_tutor",
       "type": "relation",
       "position": {
@@ -240,7 +226,7 @@
       },
       "width": 120,
       "height": 120,
-      "selected": true,
+      "selected": false,
       "positionAbsolute": {
         "x": 345.13384277007714,
         "y": 539.6617148050266
@@ -589,60 +575,6 @@
   ],
   "edges": [
     {
-      "id": "e8_ed_isa1",
-      "source": "r8_isa_pers",
-      "target": "e8_persona",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
-      "id": "e8_ed_isa2",
-      "source": "r8_isa_pers",
-      "target": "e8_studente",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
-      "id": "e8_ed_isa3",
-      "source": "r8_isa_pers",
-      "target": "e8_lavoratore",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
-      "id": "e8_ed_isa4",
-      "source": "r8_isa_lav",
-      "target": "e8_lavoratore",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
-      "id": "e8_ed_isa5",
-      "source": "r8_isa_lav",
-      "target": "e8_docente",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
-      "id": "e8_ed_isa6",
-      "source": "r8_isa_lav",
-      "target": "e8_tecnico",
-      "type": "association",
-      "data": {
-        "cardinality": "(1,1)"
-      }
-    },
-    {
       "id": "e8_ed_tut1",
       "source": "r8_tutor",
       "target": "e8_docente",
@@ -774,11 +706,55 @@
       "target": "a8_d_as",
       "type": "attribute-link",
       "data": {}
+    },
+    {
+      "id": "7bneajcd3",
+      "source": "e8_docente",
+      "target": "e8_lavoratore",
+      "type": "generalization",
+      "data": {
+        "coverage": "total",
+        "disjoint": "exclusive",
+        "waypoints": []
+      }
+    },
+    {
+      "id": "c1y2au7ur",
+      "source": "e8_tecnico",
+      "target": "e8_lavoratore",
+      "type": "generalization",
+      "data": {
+        "coverage": "total",
+        "disjoint": "exclusive",
+        "waypoints": []
+      }
+    },
+    {
+      "id": "315egudcr",
+      "source": "e8_studente",
+      "target": "e8_persona",
+      "type": "generalization",
+      "data": {
+        "coverage": "total",
+        "disjoint": "overlapping",
+        "waypoints": []
+      }
+    },
+    {
+      "id": "bjhvys6m4",
+      "source": "e8_lavoratore",
+      "target": "e8_persona",
+      "type": "generalization",
+      "data": {
+        "coverage": "total",
+        "disjoint": "overlapping",
+        "waypoints": []
+      }
     }
   ],
   "viewport": {
-    "x": 60.86047660718003,
-    "y": 75.22733017899998,
-    "zoom": 0.574349177498518
+    "x": 107.57451383140562,
+    "y": 35.809040608780776,
+    "zoom": 1.148698354997036
   }
 }

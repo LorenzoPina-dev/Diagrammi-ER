@@ -14,8 +14,8 @@ export type AttributeKind =
   | 'primary-key' // Pallino pieno (nero)
   | 'optional'    // Linea tratteggiata verso il pallino
 
-/** Tipo generalizzazione UML */
-export type GeneralizationCoverage = 'complete' | 'partial'
+/** Tipo generalizzazione */
+export type GeneralizationCoverage = 'total' | 'partial'
 export type GeneralizationDisjoint = 'exclusive' | 'overlapping'
 
 // ------------------------------------------------------------
@@ -28,10 +28,17 @@ export interface AttributeData {
   kind: AttributeKind
 }
 
+export interface GeneralizationData {
+  childIds: string[]
+  coverage: GeneralizationCoverage
+  disjoint: GeneralizationDisjoint
+}
+
 export interface EntityNodeData {
   label: string
   attributes: AttributeData[]
-  parentEntityId?: string
+  /** Generalizzazione in cui questo nodo è PADRE */
+  generalization?: GeneralizationData
 }
 
 export interface RelationNodeData {
@@ -51,14 +58,8 @@ export interface AttributeNodeData {
 // ------------------------------------------------------------
 
 export interface AssociationEdgeData {
-  /** Testo cardinalità mostrato sull'arco (es. "(1,N)") */
   cardinality?: string
-  /** Waypoints custom per piegare il percorso */
   waypoints?: { x: number; y: number }[]
-  /**
-   * Offset della label di cardinalità rispetto alla sua posizione di default.
-   * Viene salvato dopo un drag e riapplicato al render successivo.
-   */
   labelOffset?: { x: number; y: number }
 }
 
