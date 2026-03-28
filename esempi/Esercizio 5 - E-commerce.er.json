@@ -1,0 +1,649 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 5 - E-commerce",
+  "createdAt": "2026-03-28T09:07:37.960Z",
+  "updatedAt": "2026-03-28T09:07:37.960Z",
+  "nodes": [
+    {
+      "id": "e5_cliente",
+      "type": "entity",
+      "position": {
+        "x": 50,
+        "y": 300
+      },
+      "data": {
+        "label": "Cliente",
+        "attributes": [
+          {
+            "name": "id_cliente",
+            "kind": "primary-key",
+            "id": "e5_c_id"
+          },
+          {
+            "name": "email",
+            "kind": "normal",
+            "id": "e5_c_em"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "e5_c_no"
+          },
+          {
+            "name": "cognome",
+            "kind": "normal",
+            "id": "e5_c_co"
+          },
+          {
+            "name": "telefono",
+            "kind": "normal",
+            "id": "e5_c_te"
+          },
+          {
+            "name": "indirizzo_fatt",
+            "kind": "normal",
+            "id": "e5_c_in"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e5_ordine",
+      "type": "entity",
+      "position": {
+        "x": 450,
+        "y": 300
+      },
+      "data": {
+        "label": "Ordine",
+        "attributes": [
+          {
+            "name": "num_ordine",
+            "kind": "primary-key",
+            "id": "e5_o_nu"
+          },
+          {
+            "name": "data_ordine",
+            "kind": "normal",
+            "id": "e5_o_da"
+          },
+          {
+            "name": "stato",
+            "kind": "normal",
+            "id": "e5_o_st"
+          },
+          {
+            "name": "metodo_pag",
+            "kind": "normal",
+            "id": "e5_o_me"
+          },
+          {
+            "name": "costo_sped",
+            "kind": "normal",
+            "id": "e5_o_cs"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e5_prodotto",
+      "type": "entity",
+      "position": {
+        "x": 850,
+        "y": 300
+      },
+      "data": {
+        "label": "Prodotto",
+        "attributes": [
+          {
+            "name": "sku",
+            "kind": "primary-key",
+            "id": "e5_p_sk"
+          },
+          {
+            "name": "nome_prod",
+            "kind": "normal",
+            "id": "e5_p_no"
+          },
+          {
+            "name": "prezzo_listino",
+            "kind": "normal",
+            "id": "e5_p_pr"
+          },
+          {
+            "name": "categoria",
+            "kind": "normal",
+            "id": "e5_p_ca"
+          },
+          {
+            "name": "giacenza",
+            "kind": "normal",
+            "id": "e5_p_gi"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e5_rel_effettua",
+      "type": "relation",
+      "position": {
+        "x": 250,
+        "y": 260
+      },
+      "data": {
+        "label": "Effettua",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120
+    },
+    {
+      "id": "e5_rel_contiene",
+      "type": "relation",
+      "position": {
+        "x": 650,
+        "y": 260
+      },
+      "data": {
+        "label": "Contiene",
+        "attributes": [
+          {
+            "name": "quantita",
+            "id": "e5_r_qta"
+          },
+          {
+            "name": "prezzo_vendita",
+            "id": "e5_r_pv"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120
+    },
+    {
+      "id": "e5_c_id",
+      "type": "attribute",
+      "position": {
+        "x": 98.00000000000001,
+        "y": 167
+      },
+      "data": {
+        "label": "id_cliente",
+        "kind": "primary-key",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e5_c_em",
+      "type": "attribute",
+      "position": {
+        "x": 13.838875187053144,
+        "y": 144.9449436703877
+      },
+      "data": {
+        "label": "email",
+        "kind": "normal",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 13.838875187053144,
+        "y": 144.9449436703877
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_c_no",
+      "type": "attribute",
+      "position": {
+        "x": -22.72424847138398,
+        "y": 403.7864270382139
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -22.72424847138398,
+        "y": 403.7864270382139
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_c_co",
+      "type": "attribute",
+      "position": {
+        "x": 59.695775214970595,
+        "y": 428.7411011265923
+      },
+      "data": {
+        "label": "cognome",
+        "kind": "normal",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 59.695775214970595,
+        "y": 428.7411011265923
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_c_te",
+      "type": "attribute",
+      "position": {
+        "x": -37.217617137676214,
+        "y": 318.47247183519386
+      },
+      "data": {
+        "label": "telefono",
+        "kind": "normal",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -37.217617137676214,
+        "y": 318.47247183519386
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_c_in",
+      "type": "attribute",
+      "position": {
+        "x": -14.583302491977022,
+        "y": 232
+      },
+      "data": {
+        "label": "indirizzo_fatt",
+        "kind": "normal",
+        "ownerId": "e5_cliente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e5_o_nu",
+      "type": "attribute",
+      "position": {
+        "x": 466.66017972133955,
+        "y": 170.48220225318448
+      },
+      "data": {
+        "label": "num_ordine",
+        "kind": "primary-key",
+        "ownerId": "e5_ordine"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 466.66017972133955,
+        "y": 170.48220225318448
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_o_da",
+      "type": "attribute",
+      "position": {
+        "x": 557.2166054344567,
+        "y": 202.85365580689728
+      },
+      "data": {
+        "label": "data_ordine",
+        "kind": "normal",
+        "ownerId": "e5_ordine"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 557.2166054344567,
+        "y": 202.85365580689728
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_o_st",
+      "type": "attribute",
+      "position": {
+        "x": 537.8489591395844,
+        "y": 400.431108142151
+      },
+      "data": {
+        "label": "stato",
+        "kind": "normal",
+        "ownerId": "e5_ordine"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 537.8489591395844,
+        "y": 400.431108142151
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_o_me",
+      "type": "attribute",
+      "position": {
+        "x": 458.15104086041566,
+        "y": 410.87771490170445
+      },
+      "data": {
+        "label": "metodo_pag",
+        "kind": "normal",
+        "ownerId": "e5_ordine"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 458.15104086041566,
+        "y": 410.87771490170445
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_o_cs",
+      "type": "attribute",
+      "position": {
+        "x": 384.8092596411835,
+        "y": 220.2646670728197
+      },
+      "data": {
+        "label": "costo_sped",
+        "kind": "normal",
+        "ownerId": "e5_ordine"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 384.8092596411835,
+        "y": 220.2646670728197
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_p_sk",
+      "type": "attribute",
+      "position": {
+        "x": 898,
+        "y": 167
+      },
+      "data": {
+        "label": "sku",
+        "kind": "primary-key",
+        "ownerId": "e5_prodotto"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e5_p_no",
+      "type": "attribute",
+      "position": {
+        "x": 981.5920212067482,
+        "y": 208.076959186674
+      },
+      "data": {
+        "label": "nome_prod",
+        "kind": "normal",
+        "ownerId": "e5_prodotto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 981.5920212067482,
+        "y": 208.076959186674
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_p_pr",
+      "type": "attribute",
+      "position": {
+        "x": 1002.2697008234973,
+        "y": 377.79679349645176
+      },
+      "data": {
+        "label": "prezzo_listino",
+        "kind": "normal",
+        "ownerId": "e5_prodotto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1002.2697008234973,
+        "y": 377.79679349645176
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_p_ca",
+      "type": "attribute",
+      "position": {
+        "x": 917.348479164552,
+        "y": 402.17220926874325
+      },
+      "data": {
+        "label": "categoria",
+        "kind": "normal",
+        "ownerId": "e5_prodotto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 917.348479164552,
+        "y": 402.17220926874325
+      },
+      "dragging": false
+    },
+    {
+      "id": "e5_p_gi",
+      "type": "attribute",
+      "position": {
+        "x": 1044.2333275034284,
+        "y": 281.2032065035483
+      },
+      "data": {
+        "label": "giacenza",
+        "kind": "normal",
+        "ownerId": "e5_prodotto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1044.2333275034284,
+        "y": 281.2032065035483
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e5_ed1",
+      "source": "e5_rel_effettua",
+      "target": "e5_cliente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e5_ed2",
+      "source": "e5_rel_effettua",
+      "target": "e5_ordine",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e5_ed3",
+      "source": "e5_rel_contiene",
+      "target": "e5_ordine",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e5_ed4",
+      "source": "e5_rel_contiene",
+      "target": "e5_prodotto",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "h969ut6uw",
+      "source": "e5_cliente",
+      "target": "e5_c_id",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "6ap43prtk",
+      "source": "e5_cliente",
+      "target": "e5_c_em",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "n29nfi8dl",
+      "source": "e5_cliente",
+      "target": "e5_c_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "2u130etd4",
+      "source": "e5_cliente",
+      "target": "e5_c_co",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "pa5r31pww",
+      "source": "e5_cliente",
+      "target": "e5_c_te",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "bojz2rq4q",
+      "source": "e5_cliente",
+      "target": "e5_c_in",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ndn033soi",
+      "source": "e5_ordine",
+      "target": "e5_o_nu",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ntq0jm8fh",
+      "source": "e5_ordine",
+      "target": "e5_o_da",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "dfxdnbx4c",
+      "source": "e5_ordine",
+      "target": "e5_o_st",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "cw1rbzzro",
+      "source": "e5_ordine",
+      "target": "e5_o_me",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "pj0vf1unj",
+      "source": "e5_ordine",
+      "target": "e5_o_cs",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "veu27ea72",
+      "source": "e5_prodotto",
+      "target": "e5_p_sk",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "54ouypu54",
+      "source": "e5_prodotto",
+      "target": "e5_p_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "tjzwlxxmn",
+      "source": "e5_prodotto",
+      "target": "e5_p_pr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "kdak8u9yz",
+      "source": "e5_prodotto",
+      "target": "e5_p_ca",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "vze18lojl",
+      "source": "e5_prodotto",
+      "target": "e5_p_gi",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": 104.11008728887225,
+    "y": 306.1202406035527,
+    "zoom": 0.5743491774985181
+  }
+}

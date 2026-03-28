@@ -1,0 +1,430 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 4 - CineWorld",
+  "createdAt": "2026-03-28T09:06:41.650Z",
+  "updatedAt": "2026-03-28T09:06:41.650Z",
+  "nodes": [
+    {
+      "id": "ent_film",
+      "type": "entity",
+      "position": {
+        "x": 100,
+        "y": 300
+      },
+      "data": {
+        "label": "Film",
+        "attributes": [
+          {
+            "name": "id_film",
+            "kind": "primary-key",
+            "id": "f_id"
+          },
+          {
+            "name": "titolo",
+            "kind": "normal",
+            "id": "f_tit"
+          },
+          {
+            "name": "anno",
+            "kind": "normal",
+            "id": "f_anno"
+          },
+          {
+            "name": "genere",
+            "kind": "normal",
+            "id": "f_gen"
+          },
+          {
+            "name": "durata",
+            "kind": "normal",
+            "id": "f_dur"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "positionAbsolute": {
+        "x": 100,
+        "y": 300
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "ent_attore",
+      "type": "entity",
+      "position": {
+        "x": 600,
+        "y": 300
+      },
+      "data": {
+        "label": "Attore",
+        "attributes": [
+          {
+            "name": "id_attore",
+            "kind": "primary-key",
+            "id": "a_id"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "a_nome"
+          },
+          {
+            "name": "cognome",
+            "kind": "normal",
+            "id": "a_cogn"
+          },
+          {
+            "name": "nascita",
+            "kind": "normal",
+            "id": "a_nas"
+          },
+          {
+            "name": "nazionalita",
+            "kind": "normal",
+            "id": "a_naz"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "positionAbsolute": {
+        "x": 600,
+        "y": 300
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "rel_partecipa",
+      "type": "relation",
+      "position": {
+        "x": 350,
+        "y": 260
+      },
+      "data": {
+        "label": "Recita in",
+        "attributes": [
+          {
+            "name": "ruolo",
+            "id": "attr_ruolo"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120,
+      "positionAbsolute": {
+        "x": 350,
+        "y": 260
+      }
+    },
+    {
+      "id": "attr_ruolo",
+      "type": "attribute",
+      "position": {
+        "x": 388,
+        "y": 180
+      },
+      "data": {
+        "label": "ruolo",
+        "kind": "normal",
+        "ownerId": "rel_partecipa"
+      },
+      "width": 44,
+      "height": 44,
+      "positionAbsolute": {
+        "x": 388,
+        "y": 180
+      }
+    },
+    {
+      "id": "f_id",
+      "type": "attribute",
+      "position": {
+        "x": 148,
+        "y": 167
+      },
+      "data": {
+        "label": "id_film",
+        "kind": "primary-key",
+        "ownerId": "ent_film"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "f_tit",
+      "type": "attribute",
+      "position": {
+        "x": 60.964110800708184,
+        "y": 173.25493665482907
+      },
+      "data": {
+        "label": "titolo",
+        "kind": "normal",
+        "ownerId": "ent_film"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 60.964110800708184,
+        "y": 173.25493665482907
+      },
+      "dragging": false
+    },
+    {
+      "id": "f_anno",
+      "type": "attribute",
+      "position": {
+        "x": 1.5511385942139668,
+        "y": 348.1980743443836
+      },
+      "data": {
+        "label": "anno",
+        "kind": "normal",
+        "ownerId": "ent_film"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1.5511385942139668,
+        "y": 348.1980743443836
+      },
+      "dragging": false
+    },
+    {
+      "id": "f_gen",
+      "type": "attribute",
+      "position": {
+        "x": 71.58791720197851,
+        "y": 402.1722092687432
+      },
+      "data": {
+        "label": "genere",
+        "kind": "normal",
+        "ownerId": "ent_film"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "f_dur",
+      "type": "attribute",
+      "position": {
+        "x": 24.362652881630027,
+        "y": 256.82779073125687
+      },
+      "data": {
+        "label": "durata",
+        "kind": "normal",
+        "ownerId": "ent_film"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a_id",
+      "type": "attribute",
+      "position": {
+        "x": 648,
+        "y": 167
+      },
+      "data": {
+        "label": "id_attore",
+        "kind": "primary-key",
+        "ownerId": "ent_attore"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a_nome",
+      "type": "attribute",
+      "position": {
+        "x": 759.4496392322242,
+        "y": 202.85365580689728
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "ent_attore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 759.4496392322242,
+        "y": 202.85365580689728
+      },
+      "dragging": false
+    },
+    {
+      "id": "a_cogn",
+      "type": "attribute",
+      "position": {
+        "x": 767.9396109628277,
+        "y": 301.1883439263929
+      },
+      "data": {
+        "label": "cognome",
+        "kind": "normal",
+        "ownerId": "ent_attore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 767.9396109628277,
+        "y": 301.1883439263929
+      },
+      "dragging": false
+    },
+    {
+      "id": "a_nas",
+      "type": "attribute",
+      "position": {
+        "x": 716.099310709135,
+        "y": 384.76119800282066
+      },
+      "data": {
+        "label": "nascita",
+        "kind": "normal",
+        "ownerId": "ent_attore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 716.099310709135,
+        "y": 384.76119800282066
+      },
+      "dragging": false
+    },
+    {
+      "id": "a_naz",
+      "type": "attribute",
+      "position": {
+        "x": 630.5698216037571,
+        "y": 387.4103752256753
+      },
+      "data": {
+        "label": "nazionalita",
+        "kind": "normal",
+        "ownerId": "ent_attore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 630.5698216037571,
+        "y": 387.4103752256753
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_r_f",
+      "source": "rel_partecipa",
+      "target": "ent_film",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e_r_a",
+      "source": "rel_partecipa",
+      "target": "ent_attore",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e_attr_ruolo",
+      "source": "rel_partecipa",
+      "target": "attr_ruolo",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "gy1tayf25",
+      "source": "ent_film",
+      "target": "f_id",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ln0acesqf",
+      "source": "ent_film",
+      "target": "f_tit",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "knakt3nz4",
+      "source": "ent_film",
+      "target": "f_anno",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "up2aa0izy",
+      "source": "ent_film",
+      "target": "f_gen",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "rdjgp1bzm",
+      "source": "ent_film",
+      "target": "f_dur",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "uvdptyebl",
+      "source": "ent_attore",
+      "target": "a_id",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "hkq186639",
+      "source": "ent_attore",
+      "target": "a_nome",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "lt092d6y8",
+      "source": "ent_attore",
+      "target": "a_cogn",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ufss7g5qr",
+      "source": "ent_attore",
+      "target": "a_nas",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "4t2jr4pey",
+      "source": "ent_attore",
+      "target": "a_naz",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": 275.1100872888723,
+    "y": 324.1202406035527,
+    "zoom": 0.5743491774985181
+  }
+}

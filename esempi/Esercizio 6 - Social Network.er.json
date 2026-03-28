@@ -1,0 +1,615 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 6 - Social Network",
+  "createdAt": "2026-03-28T09:08:46.087Z",
+  "updatedAt": "2026-03-28T09:08:46.087Z",
+  "nodes": [
+    {
+      "id": "e6_utente",
+      "type": "entity",
+      "position": {
+        "x": 448.2588988734077,
+        "y": 48.25889887340776
+      },
+      "data": {
+        "label": "Utente",
+        "attributes": [
+          {
+            "name": "username",
+            "kind": "primary-key",
+            "id": "e6_u_us"
+          },
+          {
+            "name": "email",
+            "kind": "normal",
+            "id": "e6_u_em"
+          },
+          {
+            "name": "display_name",
+            "kind": "normal",
+            "id": "e6_u_dn"
+          },
+          {
+            "name": "data_iscr",
+            "kind": "normal",
+            "id": "e6_u_da"
+          },
+          {
+            "name": "bio",
+            "kind": "normal",
+            "id": "e6_u_bi"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 448.2588988734077,
+        "y": 48.25889887340776
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_post",
+      "type": "entity",
+      "position": {
+        "x": 450,
+        "y": 400
+      },
+      "data": {
+        "label": "Post",
+        "attributes": [
+          {
+            "name": "id_post",
+            "kind": "primary-key",
+            "id": "e6_p_id"
+          },
+          {
+            "name": "testo",
+            "kind": "normal",
+            "id": "e6_p_te"
+          },
+          {
+            "name": "timestamp",
+            "kind": "normal",
+            "id": "e6_p_ti"
+          },
+          {
+            "name": "media_url",
+            "kind": "normal",
+            "id": "e6_p_me"
+          },
+          {
+            "name": "visibilita",
+            "kind": "normal",
+            "id": "e6_p_vi"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e6_categoria",
+      "type": "entity",
+      "position": {
+        "x": 850,
+        "y": 400
+      },
+      "data": {
+        "label": "Categoria",
+        "attributes": [
+          {
+            "name": "nome_cat",
+            "kind": "primary-key",
+            "id": "e6_c_no"
+          },
+          {
+            "name": "descrizione",
+            "kind": "normal",
+            "id": "e6_c_de"
+          },
+          {
+            "name": "colore",
+            "kind": "normal",
+            "id": "e6_c_co"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e6_rel_pubblica",
+      "type": "relation",
+      "position": {
+        "x": 460,
+        "y": 220
+      },
+      "data": {
+        "label": "Pubblica",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e6_rel_like",
+      "type": "relation",
+      "position": {
+        "x": 200,
+        "y": 220
+      },
+      "data": {
+        "label": "Mette Like",
+        "attributes": [
+          {
+            "name": "timestamp_like",
+            "id": "e6_l_ti"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e6_rel_cat",
+      "type": "relation",
+      "position": {
+        "x": 650,
+        "y": 360
+      },
+      "data": {
+        "label": "Appartiene",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e6_u_us",
+      "type": "attribute",
+      "position": {
+        "x": 496.2588988734077,
+        "y": -84.74110112659224
+      },
+      "data": {
+        "label": "username",
+        "kind": "primary-key",
+        "ownerId": "e6_utente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e6_u_em",
+      "type": "attribute",
+      "position": {
+        "x": 619.8962459917776,
+        "y": 5.086689604664599
+      },
+      "data": {
+        "label": "email",
+        "kind": "normal",
+        "ownerId": "e6_utente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e6_u_dn",
+      "type": "attribute",
+      "position": {
+        "x": 604.0108019500897,
+        "y": -84.61754394780233
+      },
+      "data": {
+        "label": "display_name",
+        "kind": "normal",
+        "ownerId": "e6_utente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 604.0108019500897,
+        "y": -84.61754394780233
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_u_da",
+      "type": "attribute",
+      "position": {
+        "x": 395.4714003030947,
+        "y": -95.06415070735582
+      },
+      "data": {
+        "label": "data_iscr",
+        "kind": "normal",
+        "ownerId": "e6_utente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 395.4714003030947,
+        "y": -95.06415070735582
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_u_bi",
+      "type": "attribute",
+      "position": {
+        "x": 372.62155175503773,
+        "y": 5.086689604664613
+      },
+      "data": {
+        "label": "bio",
+        "kind": "normal",
+        "ownerId": "e6_utente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "e6_p_id",
+      "type": "attribute",
+      "position": {
+        "x": 503.2233033797768,
+        "y": 550.7994836345363
+      },
+      "data": {
+        "label": "id_post",
+        "kind": "primary-key",
+        "ownerId": "e6_post"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 503.2233033797768,
+        "y": 550.7994836345363
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_p_te",
+      "type": "attribute",
+      "position": {
+        "x": 635.5661561311078,
+        "y": 539.6434090234427
+      },
+      "data": {
+        "label": "testo",
+        "kind": "normal",
+        "ownerId": "e6_post"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 635.5661561311078,
+        "y": 539.6434090234427
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_p_ti",
+      "type": "attribute",
+      "position": {
+        "x": 572.6709816714293,
+        "y": 557.8874453196951
+      },
+      "data": {
+        "label": "timestamp",
+        "kind": "normal",
+        "ownerId": "e6_post"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 572.6709816714293,
+        "y": 557.8874453196951
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_p_me",
+      "type": "attribute",
+      "position": {
+        "x": 421.5879172019785,
+        "y": 556.1463441931028
+      },
+      "data": {
+        "label": "media_url",
+        "kind": "normal",
+        "ownerId": "e6_post"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 421.5879172019785,
+        "y": 556.1463441931028
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_p_vi",
+      "type": "attribute",
+      "position": {
+        "x": 351.7283382359308,
+        "y": 508.30358874478236
+      },
+      "data": {
+        "label": "visibilita",
+        "kind": "normal",
+        "ownerId": "e6_post"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 351.7283382359308,
+        "y": 508.30358874478236
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_c_no",
+      "type": "attribute",
+      "position": {
+        "x": 924.1165168988837,
+        "y": 308.7864270382139
+      },
+      "data": {
+        "label": "nome_cat",
+        "kind": "primary-key",
+        "ownerId": "e6_categoria"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 924.1165168988837,
+        "y": 308.7864270382139
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_c_de",
+      "type": "attribute",
+      "position": {
+        "x": 1031.4765160110842,
+        "y": 397.57925831608685
+      },
+      "data": {
+        "label": "descrizione",
+        "kind": "normal",
+        "ownerId": "e6_categoria"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1031.4765160110842,
+        "y": 397.57925831608685
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_c_co",
+      "type": "attribute",
+      "position": {
+        "x": 915.9992820024414,
+        "y": 482.89321351910695
+      },
+      "data": {
+        "label": "colore",
+        "kind": "normal",
+        "ownerId": "e6_categoria"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 915.9992820024414,
+        "y": 482.89321351910695
+      },
+      "dragging": false
+    },
+    {
+      "id": "e6_l_ti",
+      "type": "attribute",
+      "position": {
+        "x": 112.64071888535824,
+        "y": 260.3236856210107
+      },
+      "data": {
+        "label": "timestamp_like",
+        "ownerId": "e6_rel_like"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 112.64071888535824,
+        "y": 260.3236856210107
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e6_ed1",
+      "source": "e6_rel_pubblica",
+      "target": "e6_utente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e6_ed2",
+      "source": "e6_rel_pubblica",
+      "target": "e6_post",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e6_ed3",
+      "source": "e6_rel_like",
+      "target": "e6_utente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e6_ed4",
+      "source": "e6_rel_like",
+      "target": "e6_post",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e6_ed5",
+      "source": "e6_rel_cat",
+      "target": "e6_post",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e6_ed6",
+      "source": "e6_rel_cat",
+      "target": "e6_categoria",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "65jsy4o0m",
+      "source": "e6_utente",
+      "target": "e6_u_us",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "1rzsaeopv",
+      "source": "e6_utente",
+      "target": "e6_u_em",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "kqp9fdbav",
+      "source": "e6_utente",
+      "target": "e6_u_dn",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "fl8xz2a6f",
+      "source": "e6_utente",
+      "target": "e6_u_da",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "abfntuud1",
+      "source": "e6_utente",
+      "target": "e6_u_bi",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "934ho27ca",
+      "source": "e6_post",
+      "target": "e6_p_id",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "foyunvjlg",
+      "source": "e6_post",
+      "target": "e6_p_te",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "7glqn9hph",
+      "source": "e6_post",
+      "target": "e6_p_ti",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "cb77izd7t",
+      "source": "e6_post",
+      "target": "e6_p_me",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "zletqrji8",
+      "source": "e6_post",
+      "target": "e6_p_vi",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "qgk8a5ka1",
+      "source": "e6_categoria",
+      "target": "e6_c_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "l0r6rvvdf",
+      "source": "e6_categoria",
+      "target": "e6_c_de",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "1ii2rw43j",
+      "source": "e6_categoria",
+      "target": "e6_c_co",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "gtbcaz9ux",
+      "source": "e6_rel_like",
+      "target": "e6_l_ti",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": 108.11008728887225,
+    "y": 328.1202406035527,
+    "zoom": 0.5743491774985181
+  }
+}

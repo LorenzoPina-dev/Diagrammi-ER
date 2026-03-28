@@ -1,0 +1,597 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 3 - Ospedale",
+  "createdAt": "2026-03-28T09:05:44.893Z",
+  "updatedAt": "2026-03-28T09:05:44.893Z",
+  "nodes": [
+    {
+      "id": "ent_medico",
+      "type": "entity",
+      "position": {
+        "x": 450,
+        "y": 300
+      },
+      "data": {
+        "label": "Medico",
+        "attributes": [
+          {
+            "name": "matricola",
+            "kind": "primary-key",
+            "id": "m_matr"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "m_nome"
+          },
+          {
+            "name": "cognome",
+            "kind": "normal",
+            "id": "m_cogn"
+          },
+          {
+            "name": "specializzazione",
+            "kind": "normal",
+            "id": "m_spec"
+          },
+          {
+            "name": "telefono",
+            "kind": "normal",
+            "id": "m_tel"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 450,
+        "y": 300
+      },
+      "dragging": false
+    },
+    {
+      "id": "ent_paziente",
+      "type": "entity",
+      "position": {
+        "x": 850,
+        "y": 300
+      },
+      "data": {
+        "label": "Paziente",
+        "attributes": [
+          {
+            "name": "cf",
+            "kind": "primary-key",
+            "id": "p_cf"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "p_nome"
+          },
+          {
+            "name": "cognome",
+            "kind": "normal",
+            "id": "p_cogn"
+          },
+          {
+            "name": "data_nascita",
+            "kind": "normal",
+            "id": "p_nas"
+          },
+          {
+            "name": "gruppo_sangue",
+            "kind": "normal",
+            "id": "p_sang"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 850,
+        "y": 300
+      },
+      "dragging": false
+    },
+    {
+      "id": "ent_reparto",
+      "type": "entity",
+      "position": {
+        "x": 34.84283433489601,
+        "y": 263.6228024037505
+      },
+      "data": {
+        "label": "Reparto",
+        "attributes": [
+          {
+            "name": "nome_reparto",
+            "kind": "primary-key",
+            "id": "r_nome"
+          },
+          {
+            "name": "edificio",
+            "kind": "normal",
+            "id": "r_edif"
+          },
+          {
+            "name": "piano",
+            "kind": "normal",
+            "id": "r_piano"
+          },
+          {
+            "name": "budget",
+            "kind": "normal",
+            "id": "r_budg"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 34.84283433489601,
+        "y": 263.6228024037505
+      },
+      "dragging": false
+    },
+    {
+      "id": "rel_visita",
+      "type": "relation",
+      "position": {
+        "x": 650,
+        "y": 260
+      },
+      "data": {
+        "label": "Visita",
+        "attributes": [
+          {
+            "name": "data",
+            "id": "v_data"
+          },
+          {
+            "name": "diagnosi",
+            "id": "v_diag"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120,
+      "positionAbsolute": {
+        "x": 650,
+        "y": 260
+      }
+    },
+    {
+      "id": "rel_afferisce",
+      "type": "relation",
+      "position": {
+        "x": 250,
+        "y": 260
+      },
+      "data": {
+        "label": "Lavora in",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "positionAbsolute": {
+        "x": 250,
+        "y": 260
+      }
+    },
+    {
+      "id": "r_nome",
+      "type": "attribute",
+      "position": {
+        "x": 82.84283433489603,
+        "y": 130.62280240375048
+      },
+      "data": {
+        "label": "nome_reparto",
+        "kind": "primary-key",
+        "ownerId": "ent_reparto"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "r_edif",
+      "type": "attribute",
+      "position": {
+        "x": -56.336779462774146,
+        "y": 169.5767565604209
+      },
+      "data": {
+        "label": "edificio",
+        "kind": "normal",
+        "ownerId": "ent_reparto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -56.336779462774146,
+        "y": 169.5767565604209
+      },
+      "dragging": false
+    },
+    {
+      "id": "r_piano",
+      "type": "attribute",
+      "position": {
+        "x": -72.85909913630533,
+        "y": 340.48150179438056
+      },
+      "data": {
+        "label": "piano",
+        "kind": "normal",
+        "ownerId": "ent_reparto"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -72.85909913630533,
+        "y": 340.48150179438056
+      },
+      "dragging": false
+    },
+    {
+      "id": "r_budg",
+      "type": "attribute",
+      "position": {
+        "x": -47.15716566510399,
+        "y": 260.6228024037505
+      },
+      "data": {
+        "label": "budget",
+        "kind": "normal",
+        "ownerId": "ent_reparto"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "m_matr",
+      "type": "attribute",
+      "position": {
+        "x": 498,
+        "y": 167
+      },
+      "data": {
+        "label": "matricola",
+        "kind": "primary-key",
+        "ownerId": "ent_medico"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "m_nome",
+      "type": "attribute",
+      "position": {
+        "x": 595.2471889029121,
+        "y": 160.5037132448357
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "ent_medico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 595.2471889029121,
+        "y": 160.5037132448357
+      },
+      "dragging": false
+    },
+    {
+      "id": "m_cogn",
+      "type": "attribute",
+      "position": {
+        "x": 517.6732426347871,
+        "y": 406.13073300106186
+      },
+      "data": {
+        "label": "cognome",
+        "kind": "normal",
+        "ownerId": "ent_medico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 517.6732426347871,
+        "y": 406.13073300106186
+      },
+      "dragging": false
+    },
+    {
+      "id": "m_spec",
+      "type": "attribute",
+      "position": {
+        "x": 428.1854567558429,
+        "y": 403.49171717951606
+      },
+      "data": {
+        "label": "specializzazione",
+        "kind": "normal",
+        "ownerId": "ent_medico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 428.1854567558429,
+        "y": 403.49171717951606
+      },
+      "dragging": false
+    },
+    {
+      "id": "m_tel",
+      "type": "attribute",
+      "position": {
+        "x": 424.50395349099995,
+        "y": 177.6573160848833
+      },
+      "data": {
+        "label": "telefono",
+        "kind": "normal",
+        "ownerId": "ent_medico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 424.50395349099995,
+        "y": 177.6573160848833
+      },
+      "dragging": false
+    },
+    {
+      "id": "p_cf",
+      "type": "attribute",
+      "position": {
+        "x": 898,
+        "y": 167
+      },
+      "data": {
+        "label": "cf",
+        "kind": "primary-key",
+        "ownerId": "ent_paziente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "p_nome",
+      "type": "attribute",
+      "position": {
+        "x": 971.4960465089999,
+        "y": 188.21337937106642
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "ent_paziente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 971.4960465089999,
+        "y": 188.21337937106642
+      },
+      "dragging": false
+    },
+    {
+      "id": "p_cogn",
+      "type": "attribute",
+      "position": {
+        "x": 1035.1094466935747,
+        "y": 272.8604340129997
+      },
+      "data": {
+        "label": "cognome",
+        "kind": "normal",
+        "ownerId": "ent_paziente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1035.1094466935747,
+        "y": 272.8604340129997
+      },
+      "dragging": false
+    },
+    {
+      "id": "p_nas",
+      "type": "attribute",
+      "position": {
+        "x": 994.4434535132275,
+        "y": 378.4210668748311
+      },
+      "data": {
+        "label": "data_nascita",
+        "kind": "normal",
+        "ownerId": "ent_paziente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 994.4434535132275,
+        "y": 378.4210668748311
+      },
+      "dragging": false
+    },
+    {
+      "id": "p_sang",
+      "type": "attribute",
+      "position": {
+        "x": 823.1844455802271,
+        "y": 200.08895056802248
+      },
+      "data": {
+        "label": "gruppo_sangue",
+        "kind": "normal",
+        "ownerId": "ent_paziente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 823.1844455802271,
+        "y": 200.08895056802248
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_v_m",
+      "source": "rel_visita",
+      "target": "ent_medico",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e_v_p",
+      "source": "rel_visita",
+      "target": "ent_paziente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e_a_m",
+      "source": "rel_afferisce",
+      "target": "ent_medico",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e_a_r",
+      "source": "rel_afferisce",
+      "target": "ent_reparto",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "ymftvs70q",
+      "source": "ent_reparto",
+      "target": "r_nome",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ktzqfsm93",
+      "source": "ent_reparto",
+      "target": "r_edif",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "watc00l9u",
+      "source": "ent_reparto",
+      "target": "r_piano",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "2xixpk5ti",
+      "source": "ent_reparto",
+      "target": "r_budg",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "1qaydjik2",
+      "source": "ent_medico",
+      "target": "m_matr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "lpoz46c5n",
+      "source": "ent_medico",
+      "target": "m_nome",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "hsaxrgg72",
+      "source": "ent_medico",
+      "target": "m_cogn",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ew2d29qq0",
+      "source": "ent_medico",
+      "target": "m_spec",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "8icmyr7t7",
+      "source": "ent_medico",
+      "target": "m_tel",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "w6h0wn4wx",
+      "source": "ent_paziente",
+      "target": "p_cf",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "08p26b9uf",
+      "source": "ent_paziente",
+      "target": "p_nome",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "ggnatjqyt",
+      "source": "ent_paziente",
+      "target": "p_cogn",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "failos0pi",
+      "source": "ent_paziente",
+      "target": "p_nas",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "3alevm5qg",
+      "source": "ent_paziente",
+      "target": "p_sang",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": 280.11008728887225,
+    "y": 301.1202406035527,
+    "zoom": 0.5743491774985181
+  }
+}

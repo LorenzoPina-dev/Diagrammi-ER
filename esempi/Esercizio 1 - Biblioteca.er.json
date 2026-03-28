@@ -1,0 +1,304 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 1 - Biblioteca",
+  "createdAt": "2026-03-28T08:58:23.144Z",
+  "updatedAt": "2026-03-28T08:58:23.144Z",
+  "nodes": [
+    {
+      "id": "ent_libro",
+      "type": "entity",
+      "position": {
+        "x": 100,
+        "y": 300
+      },
+      "data": {
+        "label": "Libro",
+        "attributes": [
+          {
+            "name": "isbn",
+            "kind": "primary-key",
+            "id": "attr_isbn"
+          },
+          {
+            "name": "titolo",
+            "kind": "normal",
+            "id": "attr_titolo"
+          },
+          {
+            "name": "anno_pubblicazione",
+            "kind": "normal",
+            "id": "attr_anno"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 100,
+        "y": 300
+      },
+      "dragging": false
+    },
+    {
+      "id": "ent_autore",
+      "type": "entity",
+      "position": {
+        "x": 600,
+        "y": 300
+      },
+      "data": {
+        "label": "Autore",
+        "attributes": [
+          {
+            "name": "id_autore",
+            "kind": "primary-key",
+            "id": "attr_idaut"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "attr_nome"
+          },
+          {
+            "name": "nazionalita",
+            "kind": "normal",
+            "id": "attr_naz"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 600,
+        "y": 300
+      },
+      "dragging": false
+    },
+    {
+      "id": "rel_scrive",
+      "type": "relation",
+      "position": {
+        "x": 350,
+        "y": 260
+      },
+      "data": {
+        "label": "Scrive",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 350,
+        "y": 260
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_isbn",
+      "type": "attribute",
+      "position": {
+        "x": -98.24533090987546,
+        "y": 295.6243620840304
+      },
+      "data": {
+        "label": "isbn",
+        "kind": "primary-key",
+        "ownerId": "ent_libro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -98.24533090987546,
+        "y": 295.6243620840304
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_titolo",
+      "type": "attribute",
+      "position": {
+        "x": -52.234153594736114,
+        "y": 209.47198545925283
+      },
+      "data": {
+        "label": "titolo",
+        "kind": "normal",
+        "ownerId": "ent_libro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -52.234153594736114,
+        "y": 209.47198545925283
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_anno",
+      "type": "attribute",
+      "position": {
+        "x": 25.9405776603202,
+        "y": 168.11884467935954
+      },
+      "data": {
+        "label": "anno",
+        "kind": "normal",
+        "ownerId": "ent_libro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 25.9405776603202,
+        "y": 168.11884467935954
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_idaut",
+      "type": "attribute",
+      "position": {
+        "x": 630.7705404975693,
+        "y": 172.4596633558761
+      },
+      "data": {
+        "label": "id_autore",
+        "kind": "primary-key",
+        "ownerId": "ent_autore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 630.7705404975693,
+        "y": 172.4596633558761
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_nome",
+      "type": "attribute",
+      "position": {
+        "x": 685.5019112061709,
+        "y": 181.1651689888373
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "ent_autore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 685.5019112061709,
+        "y": 181.1651689888373
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_naz",
+      "type": "attribute",
+      "position": {
+        "x": 755.6264954338793,
+        "y": 239.1651689888373
+      },
+      "data": {
+        "label": "nazionalita",
+        "kind": "normal",
+        "ownerId": "ent_autore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 755.6264954338793,
+        "y": 239.1651689888373
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_l_isbn",
+      "source": "ent_libro",
+      "target": "attr_isbn",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_l_titolo",
+      "source": "ent_libro",
+      "target": "attr_titolo",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_l_anno",
+      "source": "ent_libro",
+      "target": "attr_anno",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_a_id",
+      "source": "ent_autore",
+      "target": "attr_idaut",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_a_nome",
+      "source": "ent_autore",
+      "target": "attr_nome",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_a_naz",
+      "source": "ent_autore",
+      "target": "attr_naz",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "edge_rel_libro",
+      "source": "rel_scrive",
+      "target": "ent_libro",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)",
+        "labelOffset": {
+          "x": 0,
+          "y": -20
+        },
+        "waypoints": []
+      }
+    },
+    {
+      "id": "edge_rel_autore",
+      "source": "rel_scrive",
+      "target": "ent_autore",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)",
+        "labelOffset": {
+          "x": 0,
+          "y": -20
+        },
+        "waypoints": []
+      }
+    }
+  ],
+  "viewport": {
+    "x": 210.11503058380038,
+    "y": 247.49601694777618,
+    "zoom": 0.757858283255199
+  }
+}

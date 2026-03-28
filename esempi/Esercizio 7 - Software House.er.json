@@ -1,0 +1,745 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 7 - Software House",
+  "createdAt": "2026-03-28T09:19:04.756Z",
+  "updatedAt": "2026-03-28T09:19:04.756Z",
+  "nodes": [
+    {
+      "id": "e7_dep",
+      "type": "entity",
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "data": {
+        "label": "Dipartimento",
+        "attributes": [
+          {
+            "name": "ID_Dipartimento",
+            "kind": "primary-key",
+            "id": "a7_de1"
+          },
+          {
+            "name": "Nome_Dip",
+            "kind": "normal",
+            "id": "a7_de2"
+          },
+          {
+            "name": "Sede",
+            "kind": "normal",
+            "id": "a7_de3"
+          },
+          {
+            "name": "Budget_Dip",
+            "kind": "normal",
+            "id": "a7_de4"
+          },
+          {
+            "name": "Telefono_Interno",
+            "kind": "normal",
+            "id": "a7_de5"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41
+    },
+    {
+      "id": "a7_de1",
+      "type": "attribute",
+      "position": {
+        "x": 640.7471700447658,
+        "y": 9.661714805026676
+      },
+      "data": {
+        "label": "ID_Dipartimento",
+        "kind": "primary-key",
+        "ownerId": "e7_dep"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 640.7471700447658,
+        "y": 9.661714805026676
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_de2",
+      "type": "attribute",
+      "position": {
+        "x": 735.0036782697806,
+        "y": -0.6765703899466331
+      },
+      "data": {
+        "label": "Nome_Dip",
+        "kind": "normal",
+        "ownerId": "e7_dep"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 735.0036782697806,
+        "y": -0.6765703899466331
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_de3",
+      "type": "attribute",
+      "position": {
+        "x": 802.8401243298637,
+        "y": 46.21561974003559
+      },
+      "data": {
+        "label": "Sede",
+        "kind": "normal",
+        "ownerId": "e7_dep"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 802.8401243298637,
+        "y": 46.21561974003559
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_de4",
+      "type": "attribute",
+      "position": {
+        "x": 791.3531407798932,
+        "y": 158.37917367995257
+      },
+      "data": {
+        "label": "Budget_Dip",
+        "kind": "normal",
+        "ownerId": "e7_dep"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 791.3531407798932,
+        "y": 158.37917367995257
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_de5",
+      "type": "attribute",
+      "position": {
+        "x": 693.6505374898874,
+        "y": 217.90704571490215
+      },
+      "data": {
+        "label": "Telefono_Interno",
+        "kind": "normal",
+        "ownerId": "e7_dep"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 693.6505374898874,
+        "y": 217.90704571490215
+      },
+      "dragging": false
+    },
+    {
+      "id": "e7_dip",
+      "type": "entity",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "data": {
+        "label": "Dipendente",
+        "attributes": [
+          {
+            "name": "Matricola_Dip",
+            "kind": "primary-key",
+            "id": "a7_di1"
+          },
+          {
+            "name": "Nome",
+            "kind": "normal",
+            "id": "a7_di2"
+          },
+          {
+            "name": "Cognome",
+            "kind": "normal",
+            "id": "a7_di3"
+          },
+          {
+            "name": "Data_Assunzione",
+            "kind": "normal",
+            "id": "a7_di4"
+          },
+          {
+            "name": "Stipendio",
+            "kind": "normal",
+            "id": "a7_di5"
+          },
+          {
+            "name": "Email_Aziendale",
+            "kind": "normal",
+            "id": "a7_di6"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41
+    },
+    {
+      "id": "a7_di1",
+      "type": "attribute",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "data": {
+        "label": "Matricola_Dip",
+        "kind": "primary-key",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a7_di2",
+      "type": "attribute",
+      "position": {
+        "x": 120,
+        "y": 20
+      },
+      "data": {
+        "label": "Nome",
+        "kind": "normal",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a7_di3",
+      "type": "attribute",
+      "position": {
+        "x": 220,
+        "y": 20
+      },
+      "data": {
+        "label": "Cognome",
+        "kind": "normal",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a7_di4",
+      "type": "attribute",
+      "position": {
+        "x": -50,
+        "y": 100
+      },
+      "data": {
+        "label": "Data_Assunzione",
+        "kind": "normal",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a7_di5",
+      "type": "attribute",
+      "position": {
+        "x": 20,
+        "y": 180
+      },
+      "data": {
+        "label": "Stipendio",
+        "kind": "normal",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a7_di6",
+      "type": "attribute",
+      "position": {
+        "x": 110.8104131600237,
+        "y": 229.39402926487247
+      },
+      "data": {
+        "label": "Email_Aziendale",
+        "kind": "normal",
+        "ownerId": "e7_dip"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 110.8104131600237,
+        "y": 229.39402926487247
+      },
+      "dragging": false
+    },
+    {
+      "id": "e7_pro",
+      "type": "entity",
+      "position": {
+        "x": 350,
+        "y": 500
+      },
+      "data": {
+        "label": "Progetto",
+        "attributes": [
+          {
+            "name": "Codice_Progetto",
+            "kind": "primary-key",
+            "id": "a7_p1"
+          },
+          {
+            "name": "Nome_Codice",
+            "kind": "normal",
+            "id": "a7_p2"
+          },
+          {
+            "name": "Budget_Progetto",
+            "kind": "normal",
+            "id": "a7_p3"
+          },
+          {
+            "name": "Data_Inizio",
+            "kind": "normal",
+            "id": "a7_p4"
+          },
+          {
+            "name": "Data_Fine_Prevista",
+            "kind": "normal",
+            "id": "a7_p5"
+          },
+          {
+            "name": "Stato_Progetto",
+            "kind": "normal",
+            "id": "a7_p6"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41
+    },
+    {
+      "id": "a7_p1",
+      "type": "attribute",
+      "position": {
+        "x": 348.78805852974494,
+        "y": 638.5836161048488
+      },
+      "data": {
+        "label": "Codice_Progetto",
+        "kind": "primary-key",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 348.78805852974494,
+        "y": 638.5836161048488
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_p2",
+      "type": "attribute",
+      "position": {
+        "x": 425.8140914298043,
+        "y": 650.0705996548191
+      },
+      "data": {
+        "label": "Nome_Codice",
+        "kind": "normal",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 425.8140914298043,
+        "y": 650.0705996548191
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_p3",
+      "type": "attribute",
+      "position": {
+        "x": 517.773202944825,
+        "y": 630.5427276198695
+      },
+      "data": {
+        "label": "Budget_Progetto",
+        "kind": "normal",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 517.773202944825,
+        "y": 630.5427276198695
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_p4",
+      "type": "attribute",
+      "position": {
+        "x": 260.33828519497325,
+        "y": 591.1560548945581
+      },
+      "data": {
+        "label": "Data_Inizio",
+        "kind": "normal",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 260.33828519497325,
+        "y": 591.1560548945581
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_p5",
+      "type": "attribute",
+      "position": {
+        "x": 557.9144022544632,
+        "y": 486.62450458982795
+      },
+      "data": {
+        "label": "Data_Fine_Prevista",
+        "kind": "normal",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 557.9144022544632,
+        "y": 486.62450458982795
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_p6",
+      "type": "attribute",
+      "position": {
+        "x": 568.3159305646947,
+        "y": 565.8846910846235
+      },
+      "data": {
+        "label": "Stato_Progetto",
+        "kind": "normal",
+        "ownerId": "e7_pro"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 568.3159305646947,
+        "y": 565.8846910846235
+      },
+      "dragging": false
+    },
+    {
+      "id": "r7_aff",
+      "type": "relation",
+      "position": {
+        "x": 368.3791736799526,
+        "y": 38.174731255056344
+      },
+      "data": {
+        "label": "Afferisce",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 368.3791736799526,
+        "y": 38.174731255056344
+      },
+      "dragging": false
+    },
+    {
+      "id": "r7_dir",
+      "type": "relation",
+      "position": {
+        "x": 399.3940292648725,
+        "y": 209.39402926487247
+      },
+      "data": {
+        "label": "Dirige",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 399.3940292648725,
+        "y": 209.39402926487247
+      },
+      "dragging": false
+    },
+    {
+      "id": "r7_lav",
+      "type": "relation",
+      "position": {
+        "x": 220,
+        "y": 300
+      },
+      "data": {
+        "label": "Lavora_Su",
+        "attributes": [
+          {
+            "name": "Ruolo_Nel_Progetto",
+            "id": "a7_r1"
+          },
+          {
+            "name": "Ore_Settimanali",
+            "id": "a7_r2"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120
+    },
+    {
+      "id": "a7_r1",
+      "type": "attribute",
+      "position": {
+        "x": 134.587436880427,
+        "y": 358.5836161048488
+      },
+      "data": {
+        "label": "Ruolo_Nel_Progetto",
+        "kind": "normal",
+        "ownerId": "r7_lav"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 134.587436880427,
+        "y": 358.5836161048488
+      },
+      "dragging": false
+    },
+    {
+      "id": "a7_r2",
+      "type": "attribute",
+      "position": {
+        "x": 190.87365627528172,
+        "y": 438.44977333477163
+      },
+      "data": {
+        "label": "Ore_Settimanali",
+        "kind": "normal",
+        "ownerId": "r7_lav"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 190.87365627528172,
+        "y": 438.44977333477163
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e7_1",
+      "source": "e7_dep",
+      "target": "a7_de1",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_2",
+      "source": "e7_dep",
+      "target": "a7_de2",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_3",
+      "source": "e7_dep",
+      "target": "a7_de3",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_4",
+      "source": "e7_dep",
+      "target": "a7_de4",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_5",
+      "source": "e7_dep",
+      "target": "a7_de5",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_6",
+      "source": "e7_dip",
+      "target": "a7_di1",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_7",
+      "source": "e7_dip",
+      "target": "a7_di2",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_8",
+      "source": "e7_dip",
+      "target": "a7_di3",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_9",
+      "source": "e7_dip",
+      "target": "a7_di4",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_10",
+      "source": "e7_dip",
+      "target": "a7_di5",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_11",
+      "source": "e7_dip",
+      "target": "a7_di6",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_12",
+      "source": "e7_pro",
+      "target": "a7_p1",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_13",
+      "source": "e7_pro",
+      "target": "a7_p2",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_14",
+      "source": "e7_pro",
+      "target": "a7_p3",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_15",
+      "source": "e7_pro",
+      "target": "a7_p4",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_16",
+      "source": "e7_pro",
+      "target": "a7_p5",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_17",
+      "source": "e7_pro",
+      "target": "a7_p6",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_18",
+      "source": "r7_lav",
+      "target": "a7_r1",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_19",
+      "source": "r7_lav",
+      "target": "a7_r2",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e7_rel1",
+      "source": "r7_aff",
+      "target": "e7_dip",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e7_rel2",
+      "source": "r7_aff",
+      "target": "e7_dep",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e7_rel3",
+      "source": "r7_dir",
+      "target": "e7_dip",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e7_rel4",
+      "source": "r7_dir",
+      "target": "e7_dep",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e7_rel5",
+      "source": "r7_lav",
+      "target": "e7_dip",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e7_rel6",
+      "source": "r7_lav",
+      "target": "e7_pro",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    }
+  ],
+  "viewport": {
+    "x": -4.397218021839535,
+    "y": 81.65860921915083,
+    "zoom": 0.8705505632961245
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 2 - Universita",
+  "createdAt": "2026-03-28T09:02:17.567Z",
+  "updatedAt": "2026-03-28T09:02:17.567Z",
+  "nodes": [
+    {
+      "id": "ent_professore",
+      "type": "entity",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "data": {
+        "label": "Professore",
+        "attributes": [
+          {
+            "name": "id_docente",
+            "kind": "primary-key",
+            "id": "attr_iddoc"
+          },
+          {
+            "name": "nome",
+            "kind": "normal",
+            "id": "attr_nomeprof"
+          },
+          {
+            "name": "qualifica",
+            "kind": "normal",
+            "id": "attr_qualifica"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 100,
+        "y": 100
+      },
+      "dragging": false
+    },
+    {
+      "id": "ent_corso",
+      "type": "entity",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "data": {
+        "label": "Corso",
+        "attributes": [
+          {
+            "name": "codice_corso",
+            "kind": "primary-key",
+            "id": "attr_codcorso"
+          },
+          {
+            "name": "nome_corso",
+            "kind": "normal",
+            "id": "attr_nomecorso"
+          },
+          {
+            "name": "cfu",
+            "kind": "normal",
+            "id": "attr_cfu"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 500,
+        "y": 100
+      },
+      "dragging": false
+    },
+    {
+      "id": "ent_studente",
+      "type": "entity",
+      "position": {
+        "x": 500,
+        "y": 450
+      },
+      "data": {
+        "label": "Studente",
+        "attributes": [
+          {
+            "name": "matricola",
+            "kind": "primary-key",
+            "id": "attr_matr"
+          },
+          {
+            "name": "nome_studente",
+            "kind": "normal",
+            "id": "attr_nomestud"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 500,
+        "y": 450
+      },
+      "dragging": false
+    },
+    {
+      "id": "rel_insegna",
+      "type": "relation",
+      "position": {
+        "x": 280,
+        "y": 60
+      },
+      "data": {
+        "label": "Insegna",
+        "cardinalities": {},
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 280,
+        "y": 60
+      },
+      "dragging": false
+    },
+    {
+      "id": "rel_iscrizione",
+      "type": "relation",
+      "position": {
+        "x": 510,
+        "y": 270
+      },
+      "data": {
+        "label": "Iscrizione",
+        "cardinalities": {},
+        "attributes": [
+          {
+            "name": "data_iscrizione",
+            "kind": "normal",
+            "id": "attr_dataiscr"
+          }
+        ]
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 510,
+        "y": 270
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_iddoc",
+      "type": "attribute",
+      "position": {
+        "x": -60,
+        "y": -60
+      },
+      "data": {
+        "label": "id_docente",
+        "kind": "primary-key",
+        "ownerId": "ent_professore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 40,
+        "y": 40
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_nomeprof",
+      "type": "attribute",
+      "position": {
+        "x": -80,
+        "y": 20
+      },
+      "data": {
+        "label": "nome",
+        "kind": "normal",
+        "ownerId": "ent_professore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 20,
+        "y": 120
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_qualifica",
+      "type": "attribute",
+      "position": {
+        "x": -60,
+        "y": 100
+      },
+      "data": {
+        "label": "qualifica",
+        "kind": "normal",
+        "ownerId": "ent_professore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 40,
+        "y": 200
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_codcorso",
+      "type": "attribute",
+      "position": {
+        "x": 659.5999999999996,
+        "y": 48.999999999999886
+      },
+      "data": {
+        "label": "codice_corso",
+        "kind": "primary-key",
+        "ownerId": "ent_corso"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 659.5999999999996,
+        "y": 48.999999999999886
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_nomecorso",
+      "type": "attribute",
+      "position": {
+        "x": 513.9999999999997,
+        "y": -2.9999999999999716
+      },
+      "data": {
+        "label": "nome_corso",
+        "kind": "normal",
+        "ownerId": "ent_corso"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 513.9999999999997,
+        "y": -2.9999999999999716
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_cfu",
+      "type": "attribute",
+      "position": {
+        "x": 579.9999999999995,
+        "y": 20.00000000000007
+      },
+      "data": {
+        "label": "cfu",
+        "kind": "normal",
+        "ownerId": "ent_corso"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 579.9999999999995,
+        "y": 20.00000000000007
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_matr",
+      "type": "attribute",
+      "position": {
+        "x": 653.7917367995249,
+        "y": 566.1226654549372
+      },
+      "data": {
+        "label": "matricola",
+        "kind": "primary-key",
+        "ownerId": "ent_studente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 653.7917367995249,
+        "y": 566.1226654549372
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_nomestud",
+      "type": "attribute",
+      "position": {
+        "x": 526.765703899466,
+        "y": 584.7471700447652
+      },
+      "data": {
+        "label": "nome_studente",
+        "kind": "normal",
+        "ownerId": "ent_studente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 526.765703899466,
+        "y": 584.7471700447652
+      },
+      "dragging": false
+    },
+    {
+      "id": "attr_dataiscr",
+      "type": "attribute",
+      "position": {
+        "x": 419.9999999999997,
+        "y": 357.99999999999966
+      },
+      "data": {
+        "label": "data_iscrizione",
+        "kind": "normal",
+        "ownerId": "rel_iscrizione"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 419.9999999999997,
+        "y": 357.99999999999966
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_p_id",
+      "source": "ent_professore",
+      "target": "attr_iddoc",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_p_nome",
+      "source": "ent_professore",
+      "target": "attr_nomeprof",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_p_qual",
+      "source": "ent_professore",
+      "target": "attr_qualifica",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_c_cod",
+      "source": "ent_corso",
+      "target": "attr_codcorso",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_c_nome",
+      "source": "ent_corso",
+      "target": "attr_nomecorso",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_c_cfu",
+      "source": "ent_corso",
+      "target": "attr_cfu",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_s_matr",
+      "source": "ent_studente",
+      "target": "attr_matr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_s_nome",
+      "source": "ent_studente",
+      "target": "attr_nomestud",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e_r_data",
+      "source": "rel_iscrizione",
+      "target": "attr_dataiscr",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "assoc_insegna_prof",
+      "source": "rel_insegna",
+      "target": "ent_professore",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)",
+        "labelOffset": {
+          "x": 0,
+          "y": -20
+        },
+        "waypoints": []
+      }
+    },
+    {
+      "id": "assoc_insegna_corso",
+      "source": "rel_insegna",
+      "target": "ent_corso",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)",
+        "labelOffset": {
+          "x": 0,
+          "y": -20
+        },
+        "waypoints": []
+      }
+    },
+    {
+      "id": "assoc_iscr_stud",
+      "source": "rel_iscrizione",
+      "target": "ent_studente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)",
+        "labelOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "waypoints": []
+      }
+    },
+    {
+      "id": "assoc_iscr_corso",
+      "source": "rel_iscrizione",
+      "target": "ent_corso",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)",
+        "labelOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "waypoints": []
+      }
+    }
+  ],
+  "viewport": {
+    "x": 67.99922302761166,
+    "y": 198.6614225584969,
+    "zoom": 0.7578582832551997
+  }
+}

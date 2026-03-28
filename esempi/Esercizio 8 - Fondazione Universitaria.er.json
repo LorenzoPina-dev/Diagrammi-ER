@@ -1,0 +1,784 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 8 - Fondazione Universitaria",
+  "createdAt": "2026-03-28T09:22:41.748Z",
+  "updatedAt": "2026-03-28T09:22:41.748Z",
+  "nodes": [
+    {
+      "id": "e8_persona",
+      "type": "entity",
+      "position": {
+        "x": 452,
+        "y": 137.99999999999997
+      },
+      "data": {
+        "label": "Persona",
+        "attributes": [
+          {
+            "name": "Codice_Fiscale",
+            "kind": "primary-key",
+            "id": "a8_p_cf"
+          },
+          {
+            "name": "Nome",
+            "kind": "normal",
+            "id": "a8_p_no"
+          },
+          {
+            "name": "Cognome",
+            "kind": "normal",
+            "id": "a8_p_co"
+          },
+          {
+            "name": "Indirizzo",
+            "kind": "normal",
+            "id": "a8_p_in"
+          },
+          {
+            "name": "Telefono",
+            "kind": "normal",
+            "id": "a8_p_te"
+          },
+          {
+            "name": "Data_Nascita",
+            "kind": "normal",
+            "id": "a8_p_dn"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 452,
+        "y": 137.99999999999997
+      },
+      "dragging": false
+    },
+    {
+      "id": "e8_studente",
+      "type": "entity",
+      "position": {
+        "x": 150,
+        "y": 400
+      },
+      "data": {
+        "label": "Studente",
+        "attributes": [
+          {
+            "name": "Media_Voti",
+            "kind": "normal",
+            "id": "a8_s_mv"
+          },
+          {
+            "name": "Anno_Prima_Iscrizione",
+            "kind": "normal",
+            "id": "a8_s_ai"
+          },
+          {
+            "name": "ISEE",
+            "kind": "normal",
+            "id": "a8_s_is"
+          },
+          {
+            "name": "Stato_Iscrizione",
+            "kind": "normal",
+            "id": "a8_s_si"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e8_lavoratore",
+      "type": "entity",
+      "position": {
+        "x": 750,
+        "y": 400
+      },
+      "data": {
+        "label": "Lavoratore",
+        "attributes": [
+          {
+            "name": "Stipendio_Mensile",
+            "kind": "normal",
+            "id": "a8_l_sm"
+          },
+          {
+            "name": "IBAN",
+            "kind": "normal",
+            "id": "a8_l_ib"
+          },
+          {
+            "name": "Data_Assunzione",
+            "kind": "normal",
+            "id": "a8_l_da"
+          },
+          {
+            "name": "Tipo_Contratto",
+            "kind": "normal",
+            "id": "a8_l_tc"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e8_docente",
+      "type": "entity",
+      "position": {
+        "x": 598,
+        "y": 698
+      },
+      "data": {
+        "label": "Docente",
+        "attributes": [
+          {
+            "name": "Titolo_Studio",
+            "kind": "normal",
+            "id": "a8_d_ts"
+          },
+          {
+            "name": "Settore_Disciplinare",
+            "kind": "normal",
+            "id": "a8_d_sd"
+          },
+          {
+            "name": "Anzianita_Servizio",
+            "kind": "normal",
+            "id": "a8_d_as"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 598,
+        "y": 698
+      },
+      "dragging": false
+    },
+    {
+      "id": "e8_tecnico",
+      "type": "entity",
+      "position": {
+        "x": 900,
+        "y": 700
+      },
+      "data": {
+        "label": "Tecnico",
+        "attributes": [
+          {
+            "name": "Livello_Inquadramento",
+            "kind": "normal",
+            "id": "a8_t_li"
+          },
+          {
+            "name": "Area_Competenza",
+            "kind": "normal",
+            "id": "a8_t_ac"
+          },
+          {
+            "name": "Turno_Lavoro",
+            "kind": "normal",
+            "id": "a8_t_tl"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "r8_isa_pers",
+      "type": "relation",
+      "position": {
+        "x": 460,
+        "y": 250
+      },
+      "data": {
+        "label": "ISA (Persona)",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120
+    },
+    {
+      "id": "r8_isa_lav",
+      "type": "relation",
+      "position": {
+        "x": 760,
+        "y": 550
+      },
+      "data": {
+        "label": "ISA (Lavoratore)",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "r8_tutor",
+      "type": "relation",
+      "position": {
+        "x": 345.13384277007714,
+        "y": 539.6617148050266
+      },
+      "data": {
+        "label": "Tutoraggio",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 345.13384277007714,
+        "y": 539.6617148050266
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_p_cf",
+      "type": "attribute",
+      "position": {
+        "x": 374,
+        "y": 15.999999999999986
+      },
+      "data": {
+        "label": "Codice_Fiscale",
+        "kind": "primary-key",
+        "ownerId": "e8_persona"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 374,
+        "y": 15.999999999999986
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_p_no",
+      "type": "attribute",
+      "position": {
+        "x": 474,
+        "y": 5.999999999999986
+      },
+      "data": {
+        "label": "Nome",
+        "kind": "normal",
+        "ownerId": "e8_persona"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 474,
+        "y": 5.999999999999986
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_p_co",
+      "type": "attribute",
+      "position": {
+        "x": 592,
+        "y": 34
+      },
+      "data": {
+        "label": "Cognome",
+        "kind": "normal",
+        "ownerId": "e8_persona"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 592,
+        "y": 34
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_s_mv",
+      "type": "attribute",
+      "position": {
+        "x": 132.0246044613553,
+        "y": 310.54376105550546
+      },
+      "data": {
+        "label": "Media_Voti",
+        "kind": "normal",
+        "ownerId": "e8_studente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 132.0246044613553,
+        "y": 310.54376105550546
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_s_ai",
+      "type": "attribute",
+      "position": {
+        "x": 159.1029874210696,
+        "y": 517.0752198803334
+      },
+      "data": {
+        "label": "Anno_Prima_Iscrizione",
+        "kind": "normal",
+        "ownerId": "e8_studente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 159.1029874210696,
+        "y": 517.0752198803334
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_s_is",
+      "type": "attribute",
+      "position": {
+        "x": 56.81265354730034,
+        "y": 490.05377849835895
+      },
+      "data": {
+        "label": "ISEE",
+        "kind": "normal",
+        "ownerId": "e8_studente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 56.81265354730034,
+        "y": 490.05377849835895
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_s_si",
+      "type": "attribute",
+      "position": {
+        "x": 68,
+        "y": 397
+      },
+      "data": {
+        "label": "Stato_Iscrizione",
+        "kind": "normal",
+        "ownerId": "e8_studente"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a8_l_sm",
+      "type": "attribute",
+      "position": {
+        "x": 798,
+        "y": 267
+      },
+      "data": {
+        "label": "Stipendio_Mensile",
+        "kind": "normal",
+        "ownerId": "e8_lavoratore"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a8_l_ib",
+      "type": "attribute",
+      "position": {
+        "x": 938,
+        "y": 329.00000000000006
+      },
+      "data": {
+        "label": "IBAN",
+        "kind": "normal",
+        "ownerId": "e8_lavoratore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 938,
+        "y": 329.00000000000006
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_l_da",
+      "type": "attribute",
+      "position": {
+        "x": 950,
+        "y": 453
+      },
+      "data": {
+        "label": "Data_Assunzione",
+        "kind": "normal",
+        "ownerId": "e8_lavoratore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 950,
+        "y": 453
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_l_tc",
+      "type": "attribute",
+      "position": {
+        "x": 885.9999999999999,
+        "y": 287.00000000000006
+      },
+      "data": {
+        "label": "Tipo_Contratto",
+        "kind": "normal",
+        "ownerId": "e8_lavoratore"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 885.9999999999999,
+        "y": 287.00000000000006
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_t_li",
+      "type": "attribute",
+      "position": {
+        "x": 1046,
+        "y": 631
+      },
+      "data": {
+        "label": "Livello_Inquadramento",
+        "kind": "normal",
+        "ownerId": "e8_tecnico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1046,
+        "y": 631
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_t_ac",
+      "type": "attribute",
+      "position": {
+        "x": 1060.583302491977,
+        "y": 762
+      },
+      "data": {
+        "label": "Area_Competenza",
+        "kind": "normal",
+        "ownerId": "e8_tecnico"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a8_t_tl",
+      "type": "attribute",
+      "position": {
+        "x": 939.4166975080229,
+        "y": 814
+      },
+      "data": {
+        "label": "Turno_Lavoro",
+        "kind": "normal",
+        "ownerId": "e8_tecnico"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 939.4166975080229,
+        "y": 814
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_d_ts",
+      "type": "attribute",
+      "position": {
+        "x": 624,
+        "y": 804.9999999999999
+      },
+      "data": {
+        "label": "Titolo_Studio",
+        "kind": "normal",
+        "ownerId": "e8_docente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 624,
+        "y": 804.9999999999999
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_d_sd",
+      "type": "attribute",
+      "position": {
+        "x": 726.3293346276637,
+        "y": 811.0037347273164
+      },
+      "data": {
+        "label": "Settore_Disciplinare",
+        "kind": "normal",
+        "ownerId": "e8_docente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 726.3293346276637,
+        "y": 811.0037347273164
+      },
+      "dragging": false
+    },
+    {
+      "id": "a8_d_as",
+      "type": "attribute",
+      "position": {
+        "x": 534.0764514634094,
+        "y": 789.0291740370036
+      },
+      "data": {
+        "label": "Anzianita_Servizio",
+        "kind": "normal",
+        "ownerId": "e8_docente"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 534.0764514634094,
+        "y": 789.0291740370036
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e8_ed_isa1",
+      "source": "r8_isa_pers",
+      "target": "e8_persona",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_isa2",
+      "source": "r8_isa_pers",
+      "target": "e8_studente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_isa3",
+      "source": "r8_isa_pers",
+      "target": "e8_lavoratore",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_isa4",
+      "source": "r8_isa_lav",
+      "target": "e8_lavoratore",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_isa5",
+      "source": "r8_isa_lav",
+      "target": "e8_docente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_isa6",
+      "source": "r8_isa_lav",
+      "target": "e8_tecnico",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_tut1",
+      "source": "r8_tutor",
+      "target": "e8_docente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e8_ed_tut2",
+      "source": "r8_tutor",
+      "target": "e8_studente",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "l_p_cf",
+      "source": "e8_persona",
+      "target": "a8_p_cf",
+      "type": "attribute-link"
+    },
+    {
+      "id": "l_p_no",
+      "source": "e8_persona",
+      "target": "a8_p_no",
+      "type": "attribute-link"
+    },
+    {
+      "id": "l_p_co",
+      "source": "e8_persona",
+      "target": "a8_p_co",
+      "type": "attribute-link"
+    },
+    {
+      "id": "l_s_mv",
+      "source": "e8_studente",
+      "target": "a8_s_mv",
+      "type": "attribute-link"
+    },
+    {
+      "id": "pakhcaxc3",
+      "source": "e8_studente",
+      "target": "a8_s_ai",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "3i5s0nrg1",
+      "source": "e8_studente",
+      "target": "a8_s_is",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "7f4115xa1",
+      "source": "e8_studente",
+      "target": "a8_s_si",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "2gftkur8n",
+      "source": "e8_lavoratore",
+      "target": "a8_l_sm",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "xa0q2q4di",
+      "source": "e8_lavoratore",
+      "target": "a8_l_ib",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "uye955mct",
+      "source": "e8_lavoratore",
+      "target": "a8_l_da",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "z5rnefix7",
+      "source": "e8_lavoratore",
+      "target": "a8_l_tc",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "hgb0hn7v3",
+      "source": "e8_tecnico",
+      "target": "a8_t_li",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "uoup0zt4f",
+      "source": "e8_tecnico",
+      "target": "a8_t_ac",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "l62l1avwl",
+      "source": "e8_tecnico",
+      "target": "a8_t_tl",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "s1i0r10kd",
+      "source": "e8_docente",
+      "target": "a8_d_ts",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "aezox8sad",
+      "source": "e8_docente",
+      "target": "a8_d_sd",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "1le579ifm",
+      "source": "e8_docente",
+      "target": "a8_d_as",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": 60.86047660718003,
+    "y": 75.22733017899998,
+    "zoom": 0.574349177498518
+  }
+}

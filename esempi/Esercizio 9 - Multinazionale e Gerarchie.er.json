@@ -1,0 +1,812 @@
+{
+  "version": "1.0",
+  "name": "Esercizio 9 - Multinazionale e Gerarchie",
+  "createdAt": "2026-03-28T09:25:21.333Z",
+  "updatedAt": "2026-03-28T09:25:21.333Z",
+  "nodes": [
+    {
+      "id": "e9_sede",
+      "type": "entity",
+      "position": {
+        "x": 96.51779774681552,
+        "y": 100
+      },
+      "data": {
+        "label": "Sede",
+        "attributes": [
+          {
+            "name": "Codice_Sede",
+            "kind": "primary-key",
+            "id": "a9_s_cs"
+          },
+          {
+            "name": "Citta",
+            "kind": "normal",
+            "id": "a9_s_ci"
+          },
+          {
+            "name": "Indirizzo",
+            "kind": "normal",
+            "id": "a9_s_in"
+          },
+          {
+            "name": "CAP",
+            "kind": "normal",
+            "id": "a9_s_ca"
+          },
+          {
+            "name": "Nazione",
+            "kind": "normal",
+            "id": "a9_s_na"
+          },
+          {
+            "name": "Telefono_Centralino",
+            "kind": "normal",
+            "id": "a9_s_te"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 96.51779774681552,
+        "y": 100
+      },
+      "dragging": false
+    },
+    {
+      "id": "e9_ufficio",
+      "type": "entity",
+      "position": {
+        "x": 550,
+        "y": 100
+      },
+      "data": {
+        "label": "Ufficio",
+        "attributes": [
+          {
+            "name": "ID_Ufficio",
+            "kind": "primary-key",
+            "id": "a9_u_id"
+          },
+          {
+            "name": "Nome_Ufficio",
+            "kind": "normal",
+            "id": "a9_u_no"
+          },
+          {
+            "name": "Piano",
+            "kind": "normal",
+            "id": "a9_u_pi"
+          },
+          {
+            "name": "Capacita_Postazioni",
+            "kind": "normal",
+            "id": "a9_u_cp"
+          },
+          {
+            "name": "Orario_Apertura",
+            "kind": "normal",
+            "id": "a9_u_oa"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "e9_impiegato",
+      "type": "entity",
+      "position": {
+        "x": 550,
+        "y": 450
+      },
+      "data": {
+        "label": "Impiegato",
+        "attributes": [
+          {
+            "name": "ID_Impiegato",
+            "kind": "primary-key",
+            "id": "a9_i_id"
+          },
+          {
+            "name": "Nome",
+            "kind": "normal",
+            "id": "a9_i_no"
+          },
+          {
+            "name": "Cognome",
+            "kind": "normal",
+            "id": "a9_i_co"
+          },
+          {
+            "name": "Qualifica",
+            "kind": "normal",
+            "id": "a9_i_qu"
+          },
+          {
+            "name": "Data_Assunzione",
+            "kind": "normal",
+            "id": "a9_i_da"
+          },
+          {
+            "name": "Email",
+            "kind": "normal",
+            "id": "a9_i_em"
+          }
+        ]
+      },
+      "width": 140,
+      "height": 41,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "r9_collocato",
+      "type": "relation",
+      "position": {
+        "x": 350,
+        "y": 60
+      },
+      "data": {
+        "label": "Collocato_In",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "r9_assegnato",
+      "type": "relation",
+      "position": {
+        "x": 560,
+        "y": 270
+      },
+      "data": {
+        "label": "Assegnato_A",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120
+    },
+    {
+      "id": "r9_supervisiona",
+      "type": "relation",
+      "position": {
+        "x": 846.5539049350089,
+        "y": 483.31225229491395
+      },
+      "data": {
+        "label": "Riporta_A",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 846.5539049350089,
+        "y": 483.31225229491395
+      }
+    },
+    {
+      "id": "r9_coordina",
+      "type": "relation",
+      "position": {
+        "x": 846.9685668669792,
+        "y": 142.44006386229108
+      },
+      "data": {
+        "label": "Coordina",
+        "attributes": []
+      },
+      "width": 120,
+      "height": 120,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 846.9685668669792,
+        "y": 142.44006386229108
+      }
+    },
+    {
+      "id": "a9_s_cs",
+      "type": "attribute",
+      "position": {
+        "x": 144.51779774681552,
+        "y": -33
+      },
+      "data": {
+        "label": "Codice_Sede",
+        "kind": "primary-key",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44
+    },
+    {
+      "id": "a9_u_id",
+      "type": "attribute",
+      "position": {
+        "x": 627.5987191520683,
+        "y": -90.45633717754413
+      },
+      "data": {
+        "label": "ID_Ufficio",
+        "kind": "primary-key",
+        "ownerId": "e9_ufficio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 627.5987191520683,
+        "y": -90.45633717754413
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_id",
+      "type": "attribute",
+      "position": {
+        "x": 442.9257220754005,
+        "y": 349.163553939917
+      },
+      "data": {
+        "label": "ID_Impiegato",
+        "kind": "primary-key",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 442.9257220754005,
+        "y": 349.163553939917
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_s_ci",
+      "type": "attribute",
+      "position": {
+        "x": 182.2337517953259,
+        "y": 237.4499329378851
+      },
+      "data": {
+        "label": "Citta",
+        "kind": "normal",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 182.2337517953259,
+        "y": 237.4499329378851
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_s_in",
+      "type": "attribute",
+      "position": {
+        "x": 102.1430999720826,
+        "y": 238.6084495700588
+      },
+      "data": {
+        "label": "Indirizzo",
+        "kind": "normal",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 102.1430999720826,
+        "y": 238.6084495700588
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_s_ca",
+      "type": "attribute",
+      "position": {
+        "x": -13.922404773078949,
+        "y": 214.81229211385426
+      },
+      "data": {
+        "label": "CAP",
+        "kind": "normal",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -13.922404773078949,
+        "y": 214.81229211385426
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_s_na",
+      "type": "attribute",
+      "position": {
+        "x": -41.19175206203585,
+        "y": 101.06146056927142
+      },
+      "data": {
+        "label": "Nazione",
+        "kind": "normal",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -41.19175206203585,
+        "y": 101.06146056927142
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_s_te",
+      "type": "attribute",
+      "position": {
+        "x": 24.97009074846951,
+        "y": 2.4012808479317727
+      },
+      "data": {
+        "label": "Telefono_Centralino",
+        "kind": "normal",
+        "ownerId": "e9_sede"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 24.97009074846951,
+        "y": 2.4012808479317727
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_u_no",
+      "type": "attribute",
+      "position": {
+        "x": 747.7538640172537,
+        "y": -68.53149038338489
+      },
+      "data": {
+        "label": "Nome_Ufficio",
+        "kind": "normal",
+        "ownerId": "e9_ufficio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 747.7538640172537,
+        "y": -68.53149038338489
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_u_pi",
+      "type": "attribute",
+      "position": {
+        "x": 804.99466729244,
+        "y": 24.579894356334023
+      },
+      "data": {
+        "label": "Piano",
+        "kind": "normal",
+        "ownerId": "e9_ufficio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 804.99466729244,
+        "y": 24.579894356334023
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_u_cp",
+      "type": "attribute",
+      "position": {
+        "x": 514.6235126956095,
+        "y": -111.22599351786117
+      },
+      "data": {
+        "label": "Capacita_Postazioni",
+        "kind": "normal",
+        "ownerId": "e9_ufficio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 514.6235126956095,
+        "y": -111.22599351786117
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_u_oa",
+      "type": "attribute",
+      "position": {
+        "x": 453.3626528816301,
+        "y": -23.172209268743053
+      },
+      "data": {
+        "label": "Orario_Apertura",
+        "kind": "normal",
+        "ownerId": "e9_ufficio"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 453.3626528816301,
+        "y": -23.172209268743053
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_no",
+      "type": "attribute",
+      "position": {
+        "x": 593.8731268706766,
+        "y": 588.1374530454138
+      },
+      "data": {
+        "label": "Nome",
+        "kind": "normal",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 593.8731268706766,
+        "y": 588.1374530454138
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_co",
+      "type": "attribute",
+      "position": {
+        "x": 495.35155004750095,
+        "y": 589.3015448920302
+      },
+      "data": {
+        "label": "Cognome",
+        "kind": "normal",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 495.35155004750095,
+        "y": 589.3015448920302
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_qu",
+      "type": "attribute",
+      "position": {
+        "x": 439.60761879966367,
+        "y": 557.2956846353649
+      },
+      "data": {
+        "label": "Qualifica",
+        "kind": "normal",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 439.60761879966367,
+        "y": 557.2956846353649
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_da",
+      "type": "attribute",
+      "position": {
+        "x": 409.63086918250315,
+        "y": 495.3271177683856
+      },
+      "data": {
+        "label": "Data_Assunzione",
+        "kind": "normal",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 409.63086918250315,
+        "y": 495.3271177683856
+      },
+      "dragging": false
+    },
+    {
+      "id": "a9_i_em",
+      "type": "attribute",
+      "position": {
+        "x": 413.6230503207084,
+        "y": 427.37358502238277
+      },
+      "data": {
+        "label": "Email",
+        "kind": "normal",
+        "ownerId": "e9_impiegato"
+      },
+      "width": 44,
+      "height": 44,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 413.6230503207084,
+        "y": 427.37358502238277
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e9_e1",
+      "source": "r9_collocato",
+      "target": "e9_ufficio",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e9_e2",
+      "source": "r9_collocato",
+      "target": "e9_sede",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e9_e3",
+      "source": "r9_assegnato",
+      "target": "e9_impiegato",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,N)"
+      }
+    },
+    {
+      "id": "e9_e4",
+      "source": "r9_assegnato",
+      "target": "e9_ufficio",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)"
+      }
+    },
+    {
+      "id": "e9_e5",
+      "source": "r9_supervisiona",
+      "target": "e9_impiegato",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)",
+        "label": "Manager",
+        "labelOffset": {
+          "x": 22.742636210279368,
+          "y": -19.296541145288266
+        },
+        "waypoints": [
+          {
+            "x": 713.955035110806,
+            "y": 549.2494002634944
+          }
+        ]
+      },
+      "selected": false
+    },
+    {
+      "id": "e9_e6",
+      "source": "r9_supervisiona",
+      "target": "e9_impiegato",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)",
+        "label": "Subordinati",
+        "labelOffset": {
+          "x": 20.676570389946598,
+          "y": -14.933078614961433
+        },
+        "waypoints": [
+          {
+            "x": 907.5107155323685,
+            "y": 468.8404940059336
+          }
+        ]
+      },
+      "selected": false
+    },
+    {
+      "id": "e9_e7",
+      "source": "r9_coordina",
+      "target": "e9_ufficio",
+      "type": "association",
+      "data": {
+        "cardinality": "(1,1)",
+        "label": "Ufficio Principale",
+        "labelOffset": {
+          "x": 49.26078841158785,
+          "y": -15.157165665103957
+        },
+        "waypoints": [
+          {
+            "x": 764.9864958132555,
+            "y": 201.0835574388667
+          }
+        ]
+      },
+      "selected": false
+    },
+    {
+      "id": "e9_e8",
+      "source": "r9_coordina",
+      "target": "e9_ufficio",
+      "type": "association",
+      "data": {
+        "cardinality": "(0,N)",
+        "label": "Uffici Coordinati",
+        "labelOffset": {
+          "x": 43.95578042880147,
+          "y": -16.672882231614352
+        },
+        "waypoints": [
+          {
+            "x": 903.6745617040607,
+            "y": 119.9927213509769
+          }
+        ]
+      },
+      "selected": false
+    },
+    {
+      "id": "e9_l1",
+      "source": "e9_sede",
+      "target": "a9_s_cs",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e9_l2",
+      "source": "e9_ufficio",
+      "target": "a9_u_id",
+      "type": "attribute-link"
+    },
+    {
+      "id": "e9_l3",
+      "source": "e9_impiegato",
+      "target": "a9_i_id",
+      "type": "attribute-link"
+    },
+    {
+      "id": "5r5uuzq8a",
+      "source": "e9_sede",
+      "target": "a9_s_ci",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "kglgqpg9h",
+      "source": "e9_sede",
+      "target": "a9_s_in",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "uizaljyq5",
+      "source": "e9_sede",
+      "target": "a9_s_ca",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "4saygcefk",
+      "source": "e9_sede",
+      "target": "a9_s_na",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "sy7krvza7",
+      "source": "e9_sede",
+      "target": "a9_s_te",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "rmxdvd30d",
+      "source": "e9_ufficio",
+      "target": "a9_u_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "d0zbap7bt",
+      "source": "e9_ufficio",
+      "target": "a9_u_pi",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "nqxhba3mn",
+      "source": "e9_ufficio",
+      "target": "a9_u_cp",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "biwcwh2pi",
+      "source": "e9_ufficio",
+      "target": "a9_u_oa",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "lslrpfs0x",
+      "source": "e9_impiegato",
+      "target": "a9_i_no",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "mqetf4lph",
+      "source": "e9_impiegato",
+      "target": "a9_i_co",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "o990wscd7",
+      "source": "e9_impiegato",
+      "target": "a9_i_qu",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "bckpgyxcl",
+      "source": "e9_impiegato",
+      "target": "a9_i_da",
+      "type": "attribute-link",
+      "data": {}
+    },
+    {
+      "id": "e4mfbh4x9",
+      "source": "e9_impiegato",
+      "target": "a9_i_em",
+      "type": "attribute-link",
+      "data": {}
+    }
+  ],
+  "viewport": {
+    "x": -176.44536738099487,
+    "y": 123.82947841514351,
+    "zoom": 0.8705505632961257
+  }
+}
