@@ -16,8 +16,8 @@ import 'reactflow/dist/style.css'
 import { useDiagramStore } from '../../store/diagramStore'
 import { nodeTypes }       from '../../nodes'
 import { edgeTypes }       from '../../edges'
-import CanvasContextMenu       from './CanvasContextMenu'
-import GeneralizationLayer     from './GeneralizationLayer'
+import CanvasContextMenu   from './CanvasContextMenu'
+import GeneralizationLayer from './GeneralizationLayer'
 
 export default function ERCanvas() {
   const {
@@ -27,34 +27,26 @@ export default function ERCanvas() {
   } = useDiagramStore()
 
   const [contextMenu, setContextMenu] = useState<{
-    x: number
-    y: number
-    flowPos: { x: number; y: number }
+    x: number; y: number; flowPos: { x: number; y: number }
   } | null>(null)
 
   const rfInstanceRef = useRef<ReactFlowInstance | null>(null)
 
-  // ── Pane click ────────────────────────────────────────────
   const handlePaneClick = useCallback(() => {
     setContextMenu(null)
     selectNode(null)
   }, [selectNode])
 
-  // ── Tasto destro sul canvas ───────────────────────────────
   const handlePaneContextMenu = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault()
       if (!rfInstanceRef.current) return
-      const flowPos = rfInstanceRef.current.screenToFlowPosition({
-        x: e.clientX,
-        y: e.clientY,
-      })
+      const flowPos = rfInstanceRef.current.screenToFlowPosition({ x: e.clientX, y: e.clientY })
       setContextMenu({ x: e.clientX, y: e.clientY, flowPos })
     },
     [],
   )
 
-  // ── Cambio selezione ──────────────────────────────────────
   const handleSelectionChange = useCallback(
     ({ nodes: sel }: OnSelectionChangeParams) => {
       selectNode(sel.length === 1 ? sel[0].id : null)
@@ -62,44 +54,30 @@ export default function ERCanvas() {
     [selectNode],
   )
 
-  // ── Init istanza RF ───────────────────────────────────────
   const handleInit = useCallback((instance: ReactFlowInstance) => {
     rfInstanceRef.current = instance
   }, [])
 
-  // ── Validazione connessione ───────────────────────────────
   const isValidConnection = useCallback(
     (connection: Connection) => {
       const src = nodes.find((n) => n.id === connection.source)
       const tgt = nodes.find((n) => n.id === connection.target)
       if (!src || !tgt) return false
-
-      // Gli attributi non partecipano a connessioni manuali dal canvas
       if (src.type === 'attribute' || tgt.type === 'attribute') return false
-
-      // Blocca entità → entità diretta (deve passare per una relazione)
       if (src.type === 'entity' && tgt.type === 'entity') return false
-
-      // Self-loop puro (relazione → stessa relazione) non ha senso
       if (src.id === tgt.id && src.type === 'relation') return false
-
-      // Tutto il resto è permesso, incluso entità → stessa relazione (self-relation)
       return true
     },
     [nodes],
   )
 
-  // ── Drag & Drop dalla sidebar ─────────────────────────────
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
       e.preventDefault()
       if (!rfInstanceRef.current) return
       const type = e.dataTransfer.getData('application/er-node-type')
       if (!type) return
-      const pos = rfInstanceRef.current.screenToFlowPosition({
-        x: e.clientX,
-        y: e.clientY,
-      })
+      const pos = rfInstanceRef.current.screenToFlowPosition({ x: e.clientX, y: e.clientY })
       if (type === 'entity')   addEntity(pos)
       if (type === 'relation') addRelation(pos)
     },
@@ -112,8 +90,16 @@ export default function ERCanvas() {
   }, [])
 
   return (
-    <div className="flex-1 relative" onDrop={handleDrop} onDragOver={handleDragOver}>
-
+    /*
+     * overflow-hidden è fondamentale: impedisce che i nodi React Flow
+     * (che usano position: absolute nel loro SVG overlay) "trabocchino"
+     * fuori dal div e vadano a sovrapporsi alla sidebar.
+     */
+    <div
+      className="flex-1 relative overflow-hidden"
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -128,21 +114,13 @@ export default function ERCanvas() {
         onPaneContextMenu={handlePaneContextMenu}
         onSelectionChange={handleSelectionChange}
         onMoveEnd={(_, vp) => setViewport(vp)}
-        defaultEdgeOptions={{
-          type: 'association',
-          data: { cardinality: '(1,1)' },
-        }}
+        defaultEdgeOptions={{ type: 'association', data: { cardinality: '(1,1)' } }}
         nodeOrigin={[0, 0]}
         connectionLineStyle={{ stroke: '#a855f7', strokeWidth: 1.5, strokeDasharray: '5 3' }}
         fitView
         proOptions={{ hideAttribution: true }}
       >
-        <Background
-          variant={BackgroundVariant.Dots}
-          color="#1e293b"
-          gap={20}
-          size={1}
-        />
+        <Background variant={BackgroundVariant.Dots} color="#1e293b" gap={20} size={1} />
         <Controls showInteractive={false} />
         <MiniMap
           nodeColor={(n) =>
@@ -154,10 +132,9 @@ export default function ERCanvas() {
         />
       </ReactFlow>
 
-      {/* ── Layer generalizzazioni (struttura a T) ── */}
+      {/* Layer generalizzazioni (SVG absolute — dentro overflow:hidden del padre) */}
       <GeneralizationLayer />
 
-      {/* ── Menu contestuale ── */}
       {contextMenu && (
         <CanvasContextMenu
           x={contextMenu.x}

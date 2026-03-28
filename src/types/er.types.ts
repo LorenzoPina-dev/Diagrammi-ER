@@ -1,33 +1,46 @@
 // ============================================================
 // TIPI DI DOMINIO — Notazione ER accademica italiana (Chen)
+//                   + notazione UML attributi (figura standard)
 // ============================================================
 
-/** Tipi di nodo ammessi nel diagramma ER */
 export type ERNodeType = 'entity' | 'relation' | 'attribute'
-
-/** Tipi di arco ammessi */
 export type EREdgeType = 'association' | 'generalization' | 'attribute-link'
 
-/** Classificazione degli attributi secondo la notazione italiana */
+/**
+ * Tipi di attributo secondo la notazione UML/ER italiana:
+ *
+ *   normal           — cerchio vuoto, attributo semplice
+ *   primary-key      — cerchio pieno (•), chiave singola
+ *   optional         — cerchio vuoto + (0,1) sul link
+ *   multivalued      — cerchio vuoto + (1,N) sul link
+ *   optional-multi   — cerchio vuoto + (0,N) sul link
+ *   derived          — cerchio tratteggiato
+ *   composite        — ellisse con label, da cui partono rami figli
+ *   composite-key    — pallino pieno da cui partono rami figli (chiave composta)
+ */
 export type AttributeKind =
-  | 'normal'      // Pallino vuoto
-  | 'primary-key' // Pallino pieno (nero)
-  | 'optional'    // Linea tratteggiata verso il pallino
+  | 'normal'
+  | 'primary-key'
+  | 'optional'
+  | 'multivalued'
+  | 'optional-multi'
+  | 'derived'
+  | 'composite'
+  | 'composite-key'
 
-/** Tipo generalizzazione */
 export type GeneralizationCoverage = 'total' | 'partial'
 export type GeneralizationDisjoint = 'exclusive' | 'overlapping'
 
-// ------------------------------------------------------------
-// Strutture dati per i dati embedded nei nodi React Flow
-// ------------------------------------------------------------
-
+// ── Attributo ────────────────────────────────────────────────
 export interface AttributeData {
-  id: string
+  id:   string
   name: string
   kind: AttributeKind
+  /** Per composite / composite-key: ID dei sotto-attributi */
+  childAttributeIds?: string[]
 }
 
+// ── Nodi ─────────────────────────────────────────────────────
 export interface GeneralizationData {
   childIds: string[]
   coverage: GeneralizationCoverage
@@ -35,66 +48,68 @@ export interface GeneralizationData {
 }
 
 export interface EntityNodeData {
-  label: string
-  attributes: AttributeData[]
-  /** Generalizzazione in cui questo nodo è PADRE */
+  label:           string
+  attributes:      AttributeData[]
   generalization?: GeneralizationData
 }
 
 export interface RelationNodeData {
-  label: string
+  label:         string
   cardinalities: Record<string, string>
-  attributes: AttributeData[]
+  attributes:    AttributeData[]
 }
 
 export interface AttributeNodeData {
-  label: string
-  kind: AttributeKind
-  ownerId: string
+  label:              string
+  kind:               AttributeKind
+  ownerId:            string
+  childAttributeIds?: string[]
 }
 
-// ------------------------------------------------------------
-// Metadati per gli archi
-// ------------------------------------------------------------
-
+// ── Archi ─────────────────────────────────────────────────────
 export interface AssociationEdgeData {
-  cardinality?: string
-  waypoints?: { x: number; y: number }[]
-  labelOffset?: { x: number; y: number }
+  cardinality?:  string
+  waypoints?:    { x: number; y: number }[]
+  labelOffset?:  { x: number; y: number }
+}
+
+export interface AttributeLinkData {
+  /** Cardinalità mostrata sul link (es. "(1,N)") — per multipli/opzionali */
+  cardinality?:  string
+  waypoints?:    { x: number; y: number }[]
 }
 
 export interface GeneralizationEdgeData {
-  coverage?: GeneralizationCoverage
-  disjoint?: GeneralizationDisjoint
-  waypoints?: { x: number; y: number }[]
-  labelOffset?: { x: number; y: number }
+  coverage?:         GeneralizationCoverage
+  disjoint?:         GeneralizationDisjoint
+  waypoints?:        { x: number; y: number }[]
+  trunkWaypoints?:   { x: number; y: number }[]
+  trunkLabelOffset?: { x: number; y: number }
+  junctionOverride?: { x: number; y: number }
 }
 
-// ------------------------------------------------------------
-// Formato serializzabile per import/export JSON
-// ------------------------------------------------------------
-
+// ── Serializzazione ──────────────────────────────────────────
 export interface ERProject {
-  version: '1.0'
-  name: string
-  createdAt: string
-  updatedAt: string
-  nodes: SerializedNode[]
-  edges: SerializedEdge[]
-  viewport: { x: number; y: number; zoom: number }
+  version:   '1.0'
+  name:       string
+  createdAt:  string
+  updatedAt:  string
+  nodes:      SerializedNode[]
+  edges:      SerializedEdge[]
+  viewport:   { x: number; y: number; zoom: number }
 }
 
 export interface SerializedNode {
-  id: string
-  type: ERNodeType
+  id:       string
+  type:     ERNodeType
   position: { x: number; y: number }
-  data: EntityNodeData | RelationNodeData | AttributeNodeData
+  data:     EntityNodeData | RelationNodeData | AttributeNodeData
 }
 
 export interface SerializedEdge {
-  id: string
-  type: EREdgeType
-  source: string
-  target: string
-  data?: AssociationEdgeData | GeneralizationEdgeData
+  id:      string
+  type:    EREdgeType
+  source:  string
+  target:  string
+  data?:   AssociationEdgeData | AttributeLinkData | GeneralizationEdgeData
 }
