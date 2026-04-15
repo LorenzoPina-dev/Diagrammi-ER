@@ -1,39 +1,67 @@
 import { Boxes, Diamond, MousePointer2 } from 'lucide-react'
+import shallow from 'zustand/shallow'
+import { ER_NODE_DRAG_MIME, randomNodePosition } from '../../lib/er'
 import { useDiagramStore } from '../../store/diagramStore'
 
-export default function EmptyPanel() {
-  const { addEntity, addRelation, selectNode } = useDiagramStore()
+type DiagramNodeType = 'entity' | 'relation'
 
-  const handleAdd = (type: 'entity' | 'relation') => {
-    const pos = { x: 200 + Math.random() * 200, y: 150 + Math.random() * 200 }
-    const id = type === 'entity' ? addEntity(pos) : addRelation(pos)
+const SHORTCUTS = [
+  ['Canc', 'Elimina selezione'],
+  ['Ctrl+Z', 'Annulla'],
+  ['Ctrl+Shift+E', 'Esporta PNG'],
+  ['Tasto destro', 'Menu contestuale'],
+] as const
+
+export default function EmptyPanel() {
+  const { addEntity, addRelation, selectNode } = useDiagramStore(
+    (state) => ({
+      addEntity: state.addEntity,
+      addRelation: state.addRelation,
+      selectNode: state.selectNode,
+    }),
+    shallow,
+  )
+
+  const handleAdd = (type: DiagramNodeType) => {
+    const position = randomNodePosition()
+    const id = type === 'entity' ? addEntity(position) : addRelation(position)
     selectNode(id)
   }
 
+  const handleDragStart = (event: React.DragEvent, type: DiagramNodeType) => {
+    event.dataTransfer.setData(ER_NODE_DRAG_MIME, type)
+  }
+
   return (
-    <div className="flex flex-col h-full p-4 gap-4">
-      <div className="text-center py-8">
+    <div className="flex h-full flex-col gap-4 p-4">
+      <div className="py-8 text-center">
         <MousePointer2 className="mx-auto mb-3 text-gray-600" size={32} />
-        <p className="text-gray-400 text-sm">Seleziona un elemento<br />o aggiungi qualcosa</p>
+        <p className="text-sm text-gray-400">
+          Seleziona un elemento
+          <br />
+          o aggiungi qualcosa
+        </p>
       </div>
 
       <div className="space-y-2">
-        <p className="text-xs text-gray-500 uppercase tracking-wider font-medium px-1">Aggiungi elemento</p>
+        <p className="px-1 text-xs font-medium uppercase tracking-wider text-gray-500">Aggiungi elemento</p>
         <button
+          type="button"
           onClick={() => handleAdd('entity')}
           draggable
-          onDragStart={(e) => e.dataTransfer.setData('application/er-node-type', 'entity')}
-          className="w-full flex items-center gap-3 p-3 rounded-lg border border-blue-900/50 bg-blue-950/30 text-blue-300 hover:bg-blue-900/40 transition-colors text-sm font-medium"
+          onDragStart={(event) => handleDragStart(event, 'entity')}
+          className="flex w-full items-center gap-3 rounded-lg border border-blue-900/50 bg-blue-950/30 p-3 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-900/40"
         >
           <Boxes size={16} />
-          Entità
+          Entita
           <span className="ml-auto text-xs text-gray-500">trascina</span>
         </button>
         <button
+          type="button"
           onClick={() => handleAdd('relation')}
           draggable
-          onDragStart={(e) => e.dataTransfer.setData('application/er-node-type', 'relation')}
-          className="w-full flex items-center gap-3 p-3 rounded-lg border border-purple-900/50 bg-purple-950/30 text-purple-300 hover:bg-purple-900/40 transition-colors text-sm font-medium"
+          onDragStart={(event) => handleDragStart(event, 'relation')}
+          className="flex w-full items-center gap-3 rounded-lg border border-purple-900/50 bg-purple-950/30 p-3 text-sm font-medium text-purple-300 transition-colors hover:bg-purple-900/40"
         >
           <Diamond size={16} />
           Relazione
@@ -42,17 +70,12 @@ export default function EmptyPanel() {
       </div>
 
       <div className="mt-auto">
-        <p className="text-xs text-gray-600 uppercase tracking-wider mb-2 px-1">Scorciatoie</p>
+        <p className="mb-2 px-1 text-xs uppercase tracking-wider text-gray-600">Scorciatoie</p>
         <div className="space-y-1 text-xs text-gray-500">
-          {[
-            ['Canc', 'Elimina selezione'],
-            ['Ctrl+Z', 'Annulla'],
-            ['Ctrl+Shift+E', 'Esporta PNG'],
-            ['Tasto destro', 'Menu contestuale'],
-          ].map(([key, desc]) => (
-            <div key={key} className="flex justify-between px-2 py-1 rounded bg-gray-900">
-              <kbd className="text-gray-400 font-mono">{key}</kbd>
-              <span>{desc}</span>
+          {SHORTCUTS.map(([shortcut, description]) => (
+            <div key={shortcut} className="flex justify-between rounded bg-gray-900 px-2 py-1">
+              <kbd className="font-mono text-gray-400">{shortcut}</kbd>
+              <span>{description}</span>
             </div>
           ))}
         </div>

@@ -1,9 +1,7 @@
-// ============================================================
-// MENU CONTESTUALE — Tasto destro sulla canvas
-// ============================================================
 import { useEffect, useRef } from 'react'
-import { useDiagramStore } from '../../store/diagramStore'
 import { Boxes, Diamond } from 'lucide-react'
+import shallow from 'zustand/shallow'
+import { useDiagramStore } from '../../store/diagramStore'
 
 interface Props {
   x: number
@@ -13,24 +11,34 @@ interface Props {
 }
 
 export default function CanvasContextMenu({ x, y, flowPos, onClose }: Props) {
-  const { addEntity, addRelation, selectNode } = useDiagramStore()
-  const ref = useRef<HTMLDivElement>(null)
+  const { addEntity, addRelation, selectNode } = useDiagramStore(
+    (state) => ({
+      addEntity: state.addEntity,
+      addRelation: state.addRelation,
+      selectNode: state.selectNode,
+    }),
+    shallow,
+  )
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) onClose()
+    const handlePointerDown = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        onClose()
+      }
     }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+
+    document.addEventListener('mousedown', handlePointerDown)
+    return () => document.removeEventListener('mousedown', handlePointerDown)
   }, [onClose])
 
-  const handleAddEntity = () => {
+  const createEntity = () => {
     const id = addEntity(flowPos)
     selectNode(id)
     onClose()
   }
 
-  const handleAddRelation = () => {
+  const createRelation = () => {
     const id = addRelation(flowPos)
     selectNode(id)
     onClose()
@@ -38,21 +46,23 @@ export default function CanvasContextMenu({ x, y, flowPos, onClose }: Props) {
 
   return (
     <div
-      ref={ref}
+      ref={menuRef}
       style={{ top: y, left: x }}
-      className="absolute z-50 bg-gray-900 border border-gray-700 rounded-lg shadow-2xl py-1 min-w-48"
+      className="absolute z-50 min-w-48 rounded-lg border border-gray-700 bg-gray-900 py-1 shadow-2xl"
     >
-      <p className="px-3 py-1 text-xs text-gray-500 font-medium uppercase tracking-wider">Aggiungi</p>
+      <p className="px-3 py-1 text-xs font-medium uppercase tracking-wider text-gray-500">Aggiungi</p>
       <button
-        onClick={handleAddEntity}
-        className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-200 hover:bg-blue-900/40 hover:text-blue-300 transition-colors"
+        type="button"
+        onClick={createEntity}
+        className="flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-blue-900/40 hover:text-blue-300"
       >
         <Boxes size={14} className="text-blue-400" />
-        Nuova Entità
+        Nuova Entita
       </button>
       <button
-        onClick={handleAddRelation}
-        className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-200 hover:bg-purple-900/40 hover:text-purple-300 transition-colors"
+        type="button"
+        onClick={createRelation}
+        className="flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-purple-900/40 hover:text-purple-300"
       >
         <Diamond size={14} className="text-purple-400" />
         Nuova Relazione

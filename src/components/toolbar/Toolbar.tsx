@@ -1,137 +1,156 @@
-// ============================================================
-// TOOLBAR — Barra superiore
-// Export PNG/SVG/JSON, Import, Undo, Reset, indicatore salvataggio
-// ============================================================
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { toPng, toSvg } from 'html-to-image'
 import {
-  Download, FileJson, RotateCcw, Trash2, FolderOpen,
-  ImageIcon, Cloud,
+  Cloud,
+  Download,
+  FileJson,
+  FolderOpen,
+  ImageIcon,
+  RotateCcw,
+  Trash2,
 } from 'lucide-react'
+import shallow from 'zustand/shallow'
 import { useDiagramStore } from '../../store/diagramStore'
-import type { ERProject }  from '../../types/er.types'
+import type { EREdge, ERNode, ERProject } from '../../types/er.types'
+
+function buildProjectExport(
+  name: string,
+  nodes: ERNode[],
+  edges: EREdge[],
+  viewport: ERProject['viewport'],
+): ERProject {
+  const now = new Date().toISOString()
+
+  return {
+    version: '1.0',
+    name,
+    createdAt: now,
+    updatedAt: now,
+    nodes: nodes as ERProject['nodes'],
+    edges: edges as ERProject['edges'],
+    viewport,
+  }
+}
+
+function downloadHref(href: string, filename: string) {
+  const anchor = document.createElement('a')
+  anchor.href = href
+  anchor.download = filename
+  anchor.click()
+}
+
+async function exportViewportImage(format: 'png' | 'svg', filename: string) {
+  const element = document.querySelector<HTMLElement>('.react-flow__viewport')
+  if (!element) return
+
+  try {
+    const dataUrl =
+      format === 'png'
+        ? await toPng(element, { backgroundColor: '#0f172a', pixelRatio: 2 })
+        : await toSvg(element)
+
+    downloadHref(dataUrl, filename)
+  } catch (error) {
+    console.error(`Export ${format.toUpperCase()} fallito`, error)
+  }
+}
 
 export default function Toolbar() {
   const {
-    nodes, edges, viewport,
-    projectName, setProjectName,
-    undo, resetProject, loadProject,
-  } = useDiagramStore()
+    nodes,
+    edges,
+    viewport,
+    projectName,
+    setProjectName,
+    undo,
+    resetProject,
+    loadProject,
+  } = useDiagramStore(
+    (state) => ({
+      nodes: state.nodes,
+      edges: state.edges,
+      viewport: state.viewport,
+      projectName: state.projectName,
+      setProjectName: state.setProjectName,
+      undo: state.undo,
+      resetProject: state.resetProject,
+      loadProject: state.loadProject,
+    }),
+    shallow,
+  )
 
   const fileInputRef = useRef<HTMLInputElement>(null)
-
-  // ── Indicatore "salvato automaticamente" ──────────────────
-  // Ogni volta che nodes/edges cambiano il persist di Zustand
-  // scrive su localStorage. Mostriamo un flash visivo.
   const [savedFlash, setSavedFlash] = useState(false)
+
   useEffect(() => {
     setSavedFlash(true)
-    const t = setTimeout(() => setSavedFlash(false), 1800)
-    return () => clearTimeout(t)
+    const timeoutId = window.setTimeout(() => setSavedFlash(false), 1800)
+    return () => window.clearTimeout(timeoutId)
   }, [nodes, edges, projectName])
 
-  // ── Export PNG ────────────────────────────────────────────
-  const handleExportPng = async () => {
-    const el = document.querySelector<HTMLElement>('.react-flow__viewport')
-    if (!el) return
-    try {
-      const url = await toPng(el, { backgroundColor: '#0f172a', pixelRatio: 2 })
-      downloadHref(url, `${projectName}.png`)
-    } catch (err) {
-      console.error('Export PNG fallito', err)
-    }
-  }
-
-  // ── Export SVG ────────────────────────────────────────────
-  const handleExportSvg = async () => {
-    const el = document.querySelector<HTMLElement>('.react-flow__viewport')
-    if (!el) return
-    try {
-      const url = await toSvg(el)
-      downloadHref(url, `${projectName}.svg`)
-    } catch (err) {
-      console.error('Export SVG fallito', err)
-    }
-  }
-
-  // ── Export JSON ───────────────────────────────────────────
   const handleExportJson = () => {
-    const project: ERProject = {
-      version:   '1.0',
-      name:       projectName,
-      createdAt:  new Date().toISOString(),
-      updatedAt:  new Date().toISOString(),
-      nodes:      nodes as ERProject['nodes'],
-      edges:      edges as ERProject['edges'],
-      viewport,
-    }
-    const blob = new Blob(
-      [JSON.stringify(project, null, 2)],
-      { type: 'application/json' },
-    )
+    const project = buildProjectExport(projectName, nodes, edges, viewport)
+    const blob = new Blob([JSON.stringify(project, null, 2)], {
+      type: 'application/json',
+    })
+
     downloadHref(URL.createObjectURL(blob), `${projectName}.er.json`)
   }
 
-  // ── Import JSON ───────────────────────────────────────────
-  const handleImportJson = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const handleImportJson = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
     if (!file) return
+
     const reader = new FileReader()
-    reader.onload = (ev) => {
+    reader.onload = (loadEvent) => {
       try {
-        const project: ERProject = JSON.parse(ev.target?.result as string)
-        loadProject(project)
+        loadProject(JSON.parse(loadEvent.target?.result as string) as ERProject)
       } catch {
         alert('File JSON non valido.')
       }
     }
     reader.readAsText(file)
-    e.target.value = ''
+    event.target.value = ''
   }
 
   return (
-    <header className="h-12 flex-shrink-0 bg-gray-950 border-b border-gray-800 flex items-center gap-1 px-4">
+    <header className="flex h-12 flex-shrink-0 items-center gap-1 border-b border-gray-800 bg-gray-950 px-4">
+      <span className="mr-3 select-none text-sm font-bold text-blue-400">ER</span>
 
-      {/* ── Logo ── */}
-      <span className="text-blue-400 font-bold text-sm mr-3 select-none">ER</span>
-
-      {/* ── Nome progetto ── */}
       <input
         type="text"
         value={projectName}
-        onChange={(e) => setProjectName(e.target.value)}
+        onChange={(event) => setProjectName(event.target.value)}
         title="Rinomina progetto"
-        className="bg-transparent border-b border-gray-700 text-sm text-gray-200 px-1 py-0.5 focus:outline-none focus:border-blue-500 w-44 transition-colors"
+        className="w-44 border-b border-gray-700 bg-transparent px-1 py-0.5 text-sm text-gray-200 transition-colors focus:border-blue-500 focus:outline-none"
       />
 
-      {/* ── Indicatore salvataggio automatico ── */}
       <div
-        className={`flex items-center gap-1 ml-2 text-xs transition-all duration-500 ${
+        className={`ml-2 flex items-center gap-1 text-xs transition-all duration-500 ${
           savedFlash ? 'text-green-400' : 'text-gray-600'
         }`}
         title="Salvato automaticamente su localStorage"
       >
         <Cloud size={13} />
-        <span className="hidden sm:inline">
-          {savedFlash ? 'Salvato' : 'Auto-save'}
-        </span>
+        <span className="hidden sm:inline">{savedFlash ? 'Salvato' : 'Auto-save'}</span>
       </div>
 
       <div className="flex-1" />
 
-      {/* ── Undo ── */}
-      <ToolbarBtn onClick={undo} title="Annulla (Ctrl+Z)">
+      <ToolbarButton onClick={undo} title="Annulla (Ctrl+Z)">
         <RotateCcw size={14} />
-        <span className="hidden md:inline text-xs ml-1">Annulla</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">Annulla</span>
+      </ToolbarButton>
 
       <Divider />
 
-      {/* ── Import JSON ── */}
-      <ToolbarBtn onClick={() => fileInputRef.current?.click()} title="Importa progetto JSON">
+      <ToolbarButton
+        onClick={() => fileInputRef.current?.click()}
+        title="Importa progetto JSON"
+      >
         <FolderOpen size={14} />
-        <span className="hidden md:inline text-xs ml-1">Importa</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">Importa</span>
+      </ToolbarButton>
       <input
         ref={fileInputRef}
         type="file"
@@ -140,58 +159,59 @@ export default function Toolbar() {
         className="hidden"
       />
 
-      {/* ── Export JSON ── */}
-      <ToolbarBtn onClick={handleExportJson} title="Esporta progetto JSON">
+      <ToolbarButton onClick={handleExportJson} title="Esporta progetto JSON">
         <FileJson size={14} />
-        <span className="hidden md:inline text-xs ml-1">JSON</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">JSON</span>
+      </ToolbarButton>
 
-      {/* ── Export PNG ── */}
-      <ToolbarBtn onClick={handleExportPng} title="Esporta immagine PNG">
+      <ToolbarButton
+        onClick={() => exportViewportImage('png', `${projectName}.png`)}
+        title="Esporta immagine PNG"
+      >
         <ImageIcon size={14} />
-        <span className="hidden md:inline text-xs ml-1">PNG</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">PNG</span>
+      </ToolbarButton>
 
-      {/* ── Export SVG ── */}
-      <ToolbarBtn onClick={handleExportSvg} title="Esporta immagine SVG">
+      <ToolbarButton
+        onClick={() => exportViewportImage('svg', `${projectName}.svg`)}
+        title="Esporta immagine SVG"
+      >
         <Download size={14} />
-        <span className="hidden md:inline text-xs ml-1">SVG</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">SVG</span>
+      </ToolbarButton>
 
       <Divider />
 
-      {/* ── Nuovo diagramma ── */}
-      <ToolbarBtn
+      <ToolbarButton
         onClick={() => {
-          if (confirm('Azzerare il diagramma? L\'operazione non è reversibile.'))
+          if (confirm("Azzerare il diagramma? L'operazione non e reversibile.")) {
             resetProject()
+          }
         }}
         title="Nuovo diagramma (azzera tutto)"
         danger
       >
         <Trash2 size={14} />
-        <span className="hidden md:inline text-xs ml-1">Nuovo</span>
-      </ToolbarBtn>
+        <span className="ml-1 hidden text-xs md:inline">Nuovo</span>
+      </ToolbarButton>
     </header>
   )
 }
 
-// ─────────────────────────────────────────────────────────────
-// Sub-componenti
-// ─────────────────────────────────────────────────────────────
-interface BtnProps {
+interface ToolbarButtonProps {
   children: React.ReactNode
-  onClick:  () => void
-  title:    string
-  danger?:  boolean
+  onClick: () => void
+  title: string
+  danger?: boolean
 }
 
-function ToolbarBtn({ children, onClick, title, danger }: BtnProps) {
+function ToolbarButton({ children, onClick, title, danger }: ToolbarButtonProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
       title={title}
-      className={`flex items-center px-2 py-1.5 rounded text-xs font-medium transition-colors ${
+      className={`flex items-center rounded px-2 py-1.5 text-xs font-medium transition-colors ${
         danger
           ? 'text-red-400 hover:bg-red-900/30 hover:text-red-300'
           : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
@@ -203,12 +223,5 @@ function ToolbarBtn({ children, onClick, title, danger }: BtnProps) {
 }
 
 function Divider() {
-  return <div className="w-px h-5 bg-gray-800 mx-1" />
-}
-
-function downloadHref(href: string, filename: string) {
-  const a     = document.createElement('a')
-  a.href      = href
-  a.download  = filename
-  a.click()
+  return <div className="mx-1 h-5 w-px bg-gray-800" />
 }

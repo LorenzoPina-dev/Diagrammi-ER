@@ -1,102 +1,139 @@
-// ============================================================
-// CANVAS PRINCIPALE — React Flow con nodi e archi custom ER
-// ============================================================
 import { useCallback, useRef, useState } from 'react'
 import ReactFlow, {
   Background,
+  BackgroundVariant,
   Controls,
   MiniMap,
-  BackgroundVariant,
-  type ReactFlowInstance,
-  type OnSelectionChangeParams,
   type Connection,
+  type OnSelectionChangeParams,
+  type ReactFlowInstance,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-
+import shallow from 'zustand/shallow'
+import { ER_NODE_DRAG_MIME, isValidDiagramConnection, type CreatableDiagramNodeType } from '../../lib/er'
+import { edgeTypes } from '../../edges'
+import { nodeTypes } from '../../nodes'
 import { useDiagramStore } from '../../store/diagramStore'
-import { nodeTypes }       from '../../nodes'
-import { edgeTypes }       from '../../edges'
-import CanvasContextMenu   from './CanvasContextMenu'
+import CanvasContextMenu from './CanvasContextMenu'
 import GeneralizationLayer from './GeneralizationLayer'
+
+interface ContextMenuState {
+  x: number
+  y: number
+  flowPos: { x: number; y: number }
+}
+
+const DEFAULT_EDGE_OPTIONS = {
+  type: 'association',
+  data: { cardinality: '(1,1)' },
+} as const
+
+const CONNECTION_LINE_STYLE = {
+  stroke: '#a855f7',
+  strokeWidth: 1.5,
+  strokeDasharray: '5 3',
+} as const
+
+const minimapNodeColor = (node: { type?: string }) => {
+  switch (node.type) {
+    case 'entity':
+      return '#3b82f6'
+    case 'relation':
+      return '#a855f7'
+    default:
+      return '#22c55e'
+  }
+}
 
 export default function ERCanvas() {
   const {
-    nodes, edges,
-    onNodesChange, onEdgesChange, onConnect,
-    setViewport, addEntity, addRelation, selectNode,
-  } = useDiagramStore()
+    nodes,
+    edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+    setViewport,
+    addEntity,
+    addRelation,
+    selectNode,
+  } = useDiagramStore(
+    (state) => ({
+      nodes: state.nodes,
+      edges: state.edges,
+      onNodesChange: state.onNodesChange,
+      onEdgesChange: state.onEdgesChange,
+      onConnect: state.onConnect,
+      setViewport: state.setViewport,
+      addEntity: state.addEntity,
+      addRelation: state.addRelation,
+      selectNode: state.selectNode,
+    }),
+    shallow,
+  )
 
-  const [contextMenu, setContextMenu] = useState<{
-    x: number; y: number; flowPos: { x: number; y: number }
-  } | null>(null)
-
-  const rfInstanceRef = useRef<ReactFlowInstance | null>(null)
+  const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null)
+  const reactFlowRef = useRef<ReactFlowInstance | null>(null)
 
   const handlePaneClick = useCallback(() => {
     setContextMenu(null)
     selectNode(null)
   }, [selectNode])
 
-  const handlePaneContextMenu = useCallback(
-    (e: React.MouseEvent) => {
-      e.preventDefault()
-      if (!rfInstanceRef.current) return
-      const flowPos = rfInstanceRef.current.screenToFlowPosition({ x: e.clientX, y: e.clientY })
-      setContextMenu({ x: e.clientX, y: e.clientY, flowPos })
-    },
-    [],
-  )
+  const handlePaneContextMenu = useCallback((event: React.MouseEvent) => {
+    event.preventDefault()
+    if (!reactFlowRef.current) return
+
+    const flowPos = reactFlowRef.current.screenToFlowPosition({
+      x: event.clientX,
+      y: event.clientY,
+    })
+
+    setContextMenu({ x: event.clientX, y: event.clientY, flowPos })
+  }, [])
 
   const handleSelectionChange = useCallback(
-    ({ nodes: sel }: OnSelectionChangeParams) => {
-      selectNode(sel.length === 1 ? sel[0].id : null)
+    ({ nodes: selectedNodes }: OnSelectionChangeParams) => {
+      selectNode(selectedNodes.length === 1 ? selectedNodes[0].id : null)
     },
     [selectNode],
   )
 
   const handleInit = useCallback((instance: ReactFlowInstance) => {
-    rfInstanceRef.current = instance
+    reactFlowRef.current = instance
   }, [])
 
   const isValidConnection = useCallback(
-    (connection: Connection) => {
-      const src = nodes.find((n) => n.id === connection.source)
-      const tgt = nodes.find((n) => n.id === connection.target)
-      if (!src || !tgt) return false
-      if (src.type === 'attribute' || tgt.type === 'attribute') return false
-      if (src.type === 'entity' && tgt.type === 'entity') return false
-      if (src.id === tgt.id && src.type === 'relation') return false
-      return true
-    },
+    (connection: Connection) => isValidDiagramConnection(connection, nodes),
     [nodes],
   )
 
   const handleDrop = useCallback(
-    (e: React.DragEvent) => {
-      e.preventDefault()
-      if (!rfInstanceRef.current) return
-      const type = e.dataTransfer.getData('application/er-node-type')
-      if (!type) return
-      const pos = rfInstanceRef.current.screenToFlowPosition({ x: e.clientX, y: e.clientY })
-      if (type === 'entity')   addEntity(pos)
-      if (type === 'relation') addRelation(pos)
+    (event: React.DragEvent) => {
+      event.preventDefault()
+      if (!reactFlowRef.current) return
+
+      const nodeType = event.dataTransfer.getData(ER_NODE_DRAG_MIME) as CreatableDiagramNodeType
+      if (!nodeType) return
+
+      const position = reactFlowRef.current.screenToFlowPosition({
+        x: event.clientX,
+        y: event.clientY,
+      })
+
+      if (nodeType === 'entity') addEntity(position)
+      if (nodeType === 'relation') addRelation(position)
     },
     [addEntity, addRelation],
   )
 
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = 'move'
+  const handleDragOver = useCallback((event: React.DragEvent) => {
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'move'
   }, [])
 
   return (
-    /*
-     * overflow-hidden è fondamentale: impedisce che i nodi React Flow
-     * (che usano position: absolute nel loro SVG overlay) "trabocchino"
-     * fuori dal div e vadano a sovrapporsi alla sidebar.
-     */
     <div
-      className="flex-1 relative overflow-hidden"
+      className="relative flex-1 overflow-hidden"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
@@ -113,26 +150,18 @@ export default function ERCanvas() {
         onPaneClick={handlePaneClick}
         onPaneContextMenu={handlePaneContextMenu}
         onSelectionChange={handleSelectionChange}
-        onMoveEnd={(_, vp) => setViewport(vp)}
-        defaultEdgeOptions={{ type: 'association', data: { cardinality: '(1,1)' } }}
+        onMoveEnd={(_, viewport) => setViewport(viewport)}
+        defaultEdgeOptions={DEFAULT_EDGE_OPTIONS}
         nodeOrigin={[0, 0]}
-        connectionLineStyle={{ stroke: '#a855f7', strokeWidth: 1.5, strokeDasharray: '5 3' }}
+        connectionLineStyle={CONNECTION_LINE_STYLE}
         fitView
         proOptions={{ hideAttribution: true }}
       >
         <Background variant={BackgroundVariant.Dots} color="#1e293b" gap={20} size={1} />
         <Controls showInteractive={false} />
-        <MiniMap
-          nodeColor={(n) =>
-            n.type === 'entity'   ? '#3b82f6' :
-            n.type === 'relation' ? '#a855f7' : '#22c55e'
-          }
-          maskColor="#0f172a99"
-          pannable
-        />
+        <MiniMap nodeColor={minimapNodeColor} maskColor="#0f172a99" pannable />
       </ReactFlow>
 
-      {/* Layer generalizzazioni (SVG absolute — dentro overflow:hidden del padre) */}
       <GeneralizationLayer />
 
       {contextMenu && (
